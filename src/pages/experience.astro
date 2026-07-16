@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Our Experience | Vincenzo's Fish & Chips Van">
+<section class="page-hero">
+  <div class="container">
+    <div class="kicker">Real events</div>
+    <h1 class="page-title">Our Experience</h1>
+    <p class="lead">The little black van at Doune Gala Day, seen from both sides of the crowd.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container media-grid">
+    <article class="media-card card">
+      <video controls muted playsinline preload="metadata" src="/assets/videos/doune-gala-main.mp4"></video>
+      <h2>Doune Gala Day — View One</h2>
+    </article>
+
+    <article class="media-card card">
+      <video controls muted playsinline preload="metadata" src="/assets/videos/doune-gala-second.mp4"></video>
+      <h2>Doune Gala Day — View Two</h2>
+    </article>
+  </div>
+</section>
+</BaseLayout>
+
+<style>
+.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.media-card video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}
+.media-card h2{padding:22px;margin:0}
+@media(max-width:750px){.media-grid{grid-template-columns:1fr}}
+</style>

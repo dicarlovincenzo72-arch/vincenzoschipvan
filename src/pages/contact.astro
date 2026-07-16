@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Contact | Vincenzo's Fish & Chips Van">
+<section class="page-hero"><div class="container"><div class="kicker">Get in touch</div><h1 class="page-title">Contact Us</h1><p class="lead">For weddings, events, gala days, corporate catering and private bookings.</p></div></section>
+<section class="section"><div class="container contact-grid">
+<a class="card" href="mailto:info@vincenzosfishandchips.com"><span>Email</span><strong>info@vincenzosfishandchips.com</strong></a>
+<a class="card" href="tel:+447985522449"><span>Call or text</span><strong>07985 522 449</strong></a>
+<a class="card" href="https://www.facebook.com/VincenzosFishAndChipsVan/" target="_blank"><span>Facebook</span><strong>Send a message</strong></a>
+</div></section>
+</BaseLayout>
+<style>.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.contact-grid a{min-height:160px;padding:25px;display:flex;flex-direction:column;justify-content:space-between}.contact-grid span{color:var(--red);font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.contact-grid strong{font-size:1.2rem;overflow-wrap:anywhere}@media(max-width:750px){.contact-grid{grid-template-columns:1fr}}</style>

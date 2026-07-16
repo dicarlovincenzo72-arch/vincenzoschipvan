@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const days = [
+  {name:'Monday', stops:[['Kippen — Village Hall','4:00 PM – 5:30 PM'],['Evening stop','Please check Facebook']]},
+  {name:'Tuesday', stops:[['Riverside — Abbey Road','4:00 PM – 5:00 PM'],['Cambusbarron — Bowling Club','5:30 PM – 7:30 PM']]},
+  {name:'Wednesday', stops:[['Thornhill — Back Loan','4:00 PM – 6:00 PM'],['Evening stop','Please check Facebook']]},
+  {name:'Thursday', stops:[['Dunblane — Braeport','4:00 PM – Until last customer']]},
+  {name:'Friday', stops:[['Cornton — Johnston Avenue','4:00 PM – 6:00 PM'],['Evening stop','Please check Facebook']]},
+  {name:'Saturday', stops:[['Callander — Keltie Bridge Caravan Park','4:00 PM – Until last customer']]},
+  {name:'Sunday', stops:[['Riverside — Abbey Road','4:00 PM – 6:00 PM'],['Cambusbarron — Bowling Club','6:30 PM – 8:00 PM']]}
+];
+---
+<BaseLayout title="Find Us | Vincenzo's Fish & Chips Van">
+<section class="page-hero"><div class="container"><div class="kicker">Locations</div><h1 class="page-title">Where are we today?</h1><p class="lead">Choose a day to see where the little black van will be parked.</p></div></section>
+<section class="section"><div class="container schedule-box">
+  <div class="day-tabs" id="dayTabs">
+    {days.map((day,i)=><button type="button" data-day={i}>{day.name.slice(0,3)}</button>)}
+  </div>
+  {days.map((day,i)=><section class="day-panel" data-panel={i}>
+    <h2>{day.name}</h2>
+    <div class="stops">
+      {day.stops.map(stop=><article><h3>{stop[0]}</h3><strong>{stop[1]}</strong></article>)}
+    </div>
+  </section>)}
+  <p class="note">Please check Facebook before travelling. Locations and times can occasionally change.</p>
+  <a class="button button-red" href="https://www.facebook.com/VincenzosFishAndChipsVan/" target="_blank">View live updates</a>
+</div></section>
+<script is:inline>
+  const tabs=[...document.querySelectorAll('[data-day]')];
+  const panels=[...document.querySelectorAll('[data-panel]')];
+  const native=new Date().getDay();
+  const today=native===0?6:native-1;
+  function show(i){
+    tabs.forEach((t,n)=>t.classList.toggle('active',n===i));
+    panels.forEach((p,n)=>p.hidden=n!==i);
+  }
+  tabs.forEach((tab,i)=>tab.addEventListener('click',()=>show(i)));
+  show(today);
+</script>
+</BaseLayout>
+<style>
+.schedule-box{padding:30px;background:var(--cream);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.day-tabs{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:30px}
+.day-tabs button{padding:14px 8px;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:900;cursor:pointer}
+.day-tabs button.active{background:var(--red);color:#fff;border-color:var(--red)}
+.day-panel h2{text-align:center;font-size:2.3rem}.stops{display:grid;gap:13px;max-width:800px;margin:auto}
+.stops article{background:#fff;border:1px solid var(--line);border-radius:17px;padding:22px}.stops h3{margin:0 0 8px}.stops strong{color:var(--red)}
+.note{text-align:center;color:var(--muted);margin:28px 0 14px}.schedule-box>.button{display:flex;width:max-content;margin:auto}
+@media(max-width:650px){.day-tabs{grid-template-columns:repeat(4,1fr)}.schedule-box{padding:20px 13px}}
+</style>

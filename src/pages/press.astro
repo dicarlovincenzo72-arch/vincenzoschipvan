@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const stories = [
+['The Courier','Wheeler Dealers stars visit Vincenzo’s','/assets/images/press/mike-brewer.jpg'],
+['The Courier','Double award win for Vincenzo’s','/assets/images/best-fish-supper.jpg'],
+['Scottish Press','The launch of the little black van','/assets/images/press/van-launch.jpg'],
+['Local Press','Queues for Vincenzo’s Fish & Chips Van','/assets/images/press/van-queue.jpg'],
+['Scottish Fish & Chip Awards','Best Fish Supper and Best Chip Shop Central','/assets/images/double-award.jpg']
+];
+---
+<BaseLayout title="In the Press | Vincenzo's Fish & Chips Van">
+<section class="page-hero"><div class="container"><div class="kicker">Media archive</div><h1 class="page-title">In the Press</h1><p class="lead">Newspapers, television, awards, charity and community coverage.</p></div></section>
+<section class="section"><div class="container press-grid">{stories.map(story=><article class="press-card card"><img src={story[2]} alt={story[1]}><div><span>{story[0]}</span><h2>{story[1]}</h2><p>Open the story inside the Vincenzo’s media archive.</p></div></article>)}</div></section>
+</BaseLayout>
+<style>.press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.press-card img{width:100%;height:245px;object-fit:cover}.press-card div{padding:22px}.press-card span{color:var(--red);font-size:.69rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.press-card h2{font-size:1.45rem;margin:9px 0}.press-card p{color:var(--muted);line-height:1.55}@media(max-width:850px){.press-grid{grid-template-columns:1fr}}</style>
