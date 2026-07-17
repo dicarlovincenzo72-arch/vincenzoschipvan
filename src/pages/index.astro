@@ -2,53 +2,29 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Vincenzo's Fish & Chips Van® | Central Scotland" description="Multi award-winning mobile fish and chips across Central Scotland.">
-  <main>
-    <section class="hero" aria-label="Vincenzo's Fish & Chips Van">
-      <div class="video-stage" aria-hidden="true">
-        <video id="heroVideo1" class="hero-video is-active" autoplay muted playsinline preload="auto">
-          <source src="/assets/videos/doune-gala-main.mp4" type="video/mp4" />
-        </video>
-        <video id="heroVideo2" class="hero-video" muted playsinline preload="auto">
-          <source src="/assets/videos/doune-gala-second.mp4" type="video/mp4" />
-        </video>
-        <div id="transitionGlow" class="transition-glow"></div>
-      </div>
+  <main class="home-hero" aria-label="Vincenzo's Fish & Chips Van">
+    <div class="video-stage" aria-hidden="true">
+      <video id="heroVideo1" class="hero-video is-active" autoplay muted playsinline preload="auto" poster="/assets/images/press/van-queue.jpg">
+        <source src="/assets/videos/doune-gala-main.mp4" type="video/mp4" />
+      </video>
+      <video id="heroVideo2" class="hero-video" muted playsinline preload="auto" poster="/assets/images/press/van-launch.jpg">
+        <source src="/assets/videos/doune-gala-second.mp4" type="video/mp4" />
+      </video>
+    </div>
 
-      <div class="hero-overlay"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div id="transitionGlow" class="transition-glow" aria-hidden="true"></div>
 
-      <div class="hero-content container">
-        <div class="hero-copy">
-          <p class="eyebrow">Vincenzo's Fish & Chips Van®</p>
-          <h1>Award-winning fish & chips, served across Central Scotland.</h1>
-          <p class="lead">Village stops, weddings, corporate events, gala days and private celebrations — freshly cooked from the little black van.</p>
-          <div class="actions">
-            <a class="btn btn-red" href="/schedule">Find Us Today</a>
-            <a class="btn btn-light" href="/contact">Book an Event</a>
-          </div>
-        </div>
-      </div>
+    <nav class="quick-actions" aria-label="Quick links">
+      <a class="primary" href="/schedule">Find Us Today</a>
+      <a href="/menu">Menu</a>
+      <a href="/events">Events</a>
+    </nav>
 
-      <div class="hero-footer">
-        <div class="hero-footer-inner container">
-          <div class="proof"><strong>Multi Award Winning</strong><span>Recognised across Central Scotland</span></div>
-          <div class="proof"><strong>Fully Licensed & Insured</strong><span>Professional event catering</span></div>
-          <div class="proof"><strong>Silent Battery Powered</strong><span>No noisy generator</span></div>
-          <div class="video-progress" aria-label="Choose hero video">
-            <button id="videoDot1" class="active" aria-label="Play first video"></button>
-            <button id="videoDot2" aria-label="Play second video"></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="quick-links" aria-label="Quick links">
-      <div class="container quick-grid">
-        <a href="/schedule"><span>01</span><strong>Where we are this week</strong><b>Find Us →</b></a>
-        <a href="/menu"><span>02</span><strong>Freshly cooked favourites</strong><b>View Menu →</b></a>
-        <a href="/events"><span>03</span><strong>Weddings, parties and events</strong><b>Events →</b></a>
-        <a href="/contact"><span>04</span><strong>Tell us about your event</strong><b>Contact →</b></a>
-      </div>
-    </section>
+    <div class="video-progress" aria-label="Video selection">
+      <button id="videoDot1" class="active" aria-label="Play first video"></button>
+      <button id="videoDot2" aria-label="Play second video"></button>
+    </div>
   </main>
 
   <script is:inline>
@@ -66,91 +42,98 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         video.muted = true;
         video.playsInline = true;
         video.loop = false;
+        video.removeAttribute('loop');
       });
 
-      const setActive = async (next) => {
-        if (switching || next === current) return;
+      const setActive = async (index) => {
+        if (switching || index === current) return;
         switching = true;
+
         const outgoing = videos[current];
-        const incoming = videos[next];
+        const incoming = videos[index];
 
         try {
           incoming.currentTime = 0;
           await incoming.play();
-          glow?.classList.remove('animate');
+
+          glow?.classList.remove('run');
           void glow?.offsetWidth;
-          glow?.classList.add('animate');
-          document.querySelector('.hero')?.classList.add('is-transitioning');
-          incoming.classList.add('is-entering', 'is-active');
+          glow?.classList.add('run');
+
           outgoing.classList.add('is-leaving');
-          dots.forEach((dot, i) => dot?.classList.toggle('active', i === next));
+          incoming.classList.add('is-active', 'is-entering');
+          dots.forEach((dot, i) => dot?.classList.toggle('active', i === index));
 
           window.setTimeout(() => {
             outgoing.classList.remove('is-active', 'is-leaving');
             outgoing.pause();
             incoming.classList.remove('is-entering');
-            document.querySelector('.hero')?.classList.remove('is-transitioning');
-            current = next;
+            current = index;
             switching = false;
           }, transitionMs);
-        } catch {
-          switching = false;
+        } catch (error) {
           outgoing.play().catch(() => {});
+          switching = false;
         }
       };
 
       videos.forEach((video, index) => {
         video.addEventListener('timeupdate', () => {
-          if (index !== current || switching || !Number.isFinite(video.duration)) return;
-          if (video.duration - video.currentTime <= 1.35) setActive(index === 0 ? 1 : 0);
+          if (
+            index === current &&
+            !switching &&
+            Number.isFinite(video.duration) &&
+            video.duration > 0 &&
+            video.currentTime >= video.duration - 1.35
+          ) {
+            setActive(index === 0 ? 1 : 0);
+          }
         });
+        video.addEventListener('ended', () => setActive(index === 0 ? 1 : 0));
       });
 
       dots[0]?.addEventListener('click', () => setActive(0));
       dots[1]?.addEventListener('click', () => setActive(1));
-      videos[0].play().catch(() => {});
+
+      const resume = () => videos[current].play().catch(() => {});
+      resume();
       document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) videos[current].play().catch(() => {});
+        if (!document.hidden) resume();
       });
-      document.addEventListener('pointerdown', () => videos[current].play().catch(() => {}), { once: true });
+      document.addEventListener('pointerdown', resume, { once: true });
     })();
   </script>
 </BaseLayout>
 
 <style>
-  .hero{position:relative;min-height:100svh;overflow:hidden;background:#181818;color:#fff}
-  .video-stage,.hero-video,.hero-overlay{position:absolute;inset:0;width:100%;height:100%}
-  .hero-video{object-fit:cover;opacity:0;transform:scale(1.025);filter:saturate(1.06) contrast(1.02);transition:opacity 1.45s cubic-bezier(.22,.61,.36,1),transform 9s linear,filter 1.45s ease;will-change:opacity,transform,filter}
-  .hero-video.is-active{opacity:1;transform:scale(1.075)}
-  .hero-video.is-entering{animation:cinematicIn 1.45s cubic-bezier(.22,.61,.36,1) both}
-  .hero-video.is-leaving{animation:cinematicOut 1.45s cubic-bezier(.22,.61,.36,1) both}
-  @keyframes cinematicIn{0%{opacity:0;filter:blur(9px) saturate(.75) brightness(1.28);transform:scale(1.12)}45%{opacity:.45}100%{opacity:1;filter:blur(0) saturate(1.06) brightness(1);transform:scale(1.055)}}
-  @keyframes cinematicOut{0%{opacity:1;filter:blur(0) brightness(1)}100%{opacity:0;filter:blur(5px) brightness(.78);transform:scale(1.09)}}
-  .transition-glow{position:absolute;top:-15%;bottom:-15%;left:-40%;width:38%;opacity:0;transform:skewX(-12deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.17),rgba(255,255,255,.42),rgba(201,0,34,.16),transparent);filter:blur(18px);pointer-events:none;z-index:3}
-  .transition-glow.animate{animation:lightSweep 1.45s cubic-bezier(.22,.61,.36,1)}
-  @keyframes lightSweep{0%{left:-42%;opacity:0}22%{opacity:.72}100%{left:112%;opacity:0}}
-  .hero-overlay{z-index:4;background:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.34) 43%,rgba(0,0,0,.08) 78%),linear-gradient(0deg,rgba(0,0,0,.52) 0%,transparent 43%);transition:background 1s ease}
-  .hero.is-transitioning .hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.48) 0%,rgba(0,0,0,.27) 43%,rgba(0,0,0,.05) 78%),linear-gradient(0deg,rgba(0,0,0,.46) 0%,transparent 43%)}
-  .hero-content{position:relative;z-index:5;min-height:calc(100svh - 116px);padding-top:122px;padding-bottom:92px;display:flex;align-items:center}
-  .hero-copy{max-width:610px}
-  .eyebrow{margin:0 0 16px;font-size:.67rem;font-weight:900;letter-spacing:.19em;text-transform:uppercase;color:rgba(255,255,255,.9)}
-  h1{margin:0;max-width:600px;font-size:clamp(2.45rem,4.4vw,4.55rem);line-height:1.01;letter-spacing:-.047em;text-wrap:balance;text-shadow:0 10px 32px rgba(0,0,0,.38)}
-  .lead{max-width:570px;margin:20px 0 0;font-size:clamp(.98rem,1.2vw,1.12rem);line-height:1.62;color:rgba(255,255,255,.92);text-shadow:0 4px 18px rgba(0,0,0,.25)}
-  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-  .btn-light{background:rgba(255,255,255,.94);color:#151515;border-color:#fff}.btn-light:hover{background:#fff;color:var(--red)}
-  .hero-footer{position:absolute;z-index:6;left:0;right:0;bottom:0;border-top:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.20);backdrop-filter:blur(12px)}
-  .hero-footer-inner{min-height:116px;display:grid;grid-template-columns:repeat(3,1fr) auto;align-items:center;gap:30px}
-  .proof{display:grid;gap:5px}.proof strong{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}.proof span{font-size:.75rem;color:rgba(255,255,255,.68)}
-  .video-progress{display:flex;gap:7px;align-items:center}
-  .video-progress button{appearance:none;border:0;padding:0;width:27px;height:4px;border-radius:999px;background:rgba(255,255,255,.36);cursor:pointer;transition:.35s}
-  .video-progress button.active{width:48px;background:var(--red)}
-  .quick-links{background:#fff;padding:28px 0 36px}
-  .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #e7e2dc;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(23,23,23,.06)}
-  .quick-grid a{min-height:142px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #e7e2dc;background:#fff;transition:.25s}
-  .quick-grid a:last-child{border-right:0}.quick-grid a:hover{background:#f7f4ef;transform:translateY(-3px)}
-  .quick-grid span{font-size:.65rem;font-weight:900;letter-spacing:.13em;color:var(--red)}
-  .quick-grid strong{font-size:1.05rem;line-height:1.25;max-width:210px}.quick-grid b{font-size:.68rem;letter-spacing:.09em;text-transform:uppercase}
-  @media(max-width:960px){.hero-footer-inner{grid-template-columns:repeat(3,1fr);gap:18px}.video-progress{position:absolute;right:18px;top:-30px}.quick-grid{grid-template-columns:repeat(2,1fr)}.quick-grid a:nth-child(2){border-right:0}.quick-grid a:nth-child(-n+2){border-bottom:1px solid #e7e2dc}}
-  @media(max-width:700px){.hero{min-height:100svh}.hero-content{min-height:calc(100svh - 92px);padding-top:105px;padding-bottom:130px;align-items:flex-end}.hero-copy{max-width:100%}h1{font-size:clamp(2.25rem,10.6vw,3.5rem);line-height:1.01}.lead{font-size:.97rem;line-height:1.55}.actions{width:100%}.actions .btn{flex:1;min-width:145px;padding-inline:16px}.hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.16)),linear-gradient(0deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.15) 63%)}.hero-footer-inner{min-height:92px;grid-template-columns:1fr}.proof{display:none}.video-progress{position:static;justify-self:end}.quick-links{padding:18px 0 26px}.quick-grid{grid-template-columns:1fr}.quick-grid a{min-height:112px;border-right:0;border-bottom:1px solid #e7e2dc}.quick-grid a:last-child{border-bottom:0}}
-  @media(prefers-reduced-motion:reduce){.hero-video,.transition-glow{animation:none!important;transition:none!important}}
+  :global(body){overflow:hidden}
+  .home-hero{position:relative;height:100svh;min-height:620px;overflow:hidden;background:#101010;color:#fff}
+  .video-stage,.hero-video,.hero-overlay,.transition-glow{position:absolute;inset:0;width:100%;height:100%}
+  .video-stage{z-index:0;background:#111}
+  .hero-video{object-fit:cover;opacity:0;transform:scale(1.015);filter:blur(0);transition:opacity 1.45s cubic-bezier(.22,.61,.36,1),transform 8s linear,filter 1.45s ease;pointer-events:none;will-change:opacity,transform,filter}
+  .hero-video.is-active{opacity:1;transform:scale(1.065)}
+  .hero-video.is-entering{animation:cinematic-in 1.45s cubic-bezier(.22,.61,.36,1) both}
+  .hero-video.is-leaving{animation:cinematic-out 1.45s cubic-bezier(.22,.61,.36,1) both}
+  @keyframes cinematic-in{0%{opacity:0;transform:scale(1.09);filter:blur(8px) brightness(1.12)}55%{opacity:.72;filter:blur(2px) brightness(1.06)}100%{opacity:1;transform:scale(1.045);filter:blur(0) brightness(1)}}
+  @keyframes cinematic-out{0%{opacity:1;transform:scale(1.065);filter:blur(0)}100%{opacity:0;transform:scale(1.025);filter:blur(6px) brightness(.82)}}
+  .hero-overlay{z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.03) 42%,rgba(0,0,0,.55) 100%),linear-gradient(90deg,rgba(0,0,0,.18),transparent 46%);pointer-events:none}
+  .transition-glow{z-index:2;opacity:0;pointer-events:none;background:linear-gradient(105deg,transparent 0%,transparent 38%,rgba(255,255,255,.20) 49%,rgba(255,255,255,.07) 55%,transparent 67%);transform:translateX(-125%)}
+  .transition-glow.run{animation:light-sweep 1.45s cubic-bezier(.22,.61,.36,1)}
+  @keyframes light-sweep{0%{opacity:0;transform:translateX(-125%)}28%{opacity:.65}100%{opacity:0;transform:translateX(125%)}}
+  .quick-actions{position:absolute;z-index:4;left:50%;bottom:34px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:7px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(12,12,12,.45);backdrop-filter:blur(16px);box-shadow:0 16px 44px rgba(0,0,0,.30)}
+  .quick-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:999px;color:#fff;font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;transition:.25s ease}
+  .quick-actions a:hover{background:rgba(255,255,255,.14)}
+  .quick-actions a.primary{background:var(--red);box-shadow:0 8px 22px rgba(215,0,38,.34)}
+  .quick-actions a.primary:hover{transform:translateY(-1px);filter:brightness(1.08)}
+  .video-progress{position:absolute;z-index:4;right:28px;bottom:42px;display:flex;align-items:center;gap:8px}
+  .video-progress button{appearance:none;border:0;padding:0;width:24px;height:3px;border-radius:999px;background:rgba(255,255,255,.42);cursor:pointer;transition:.35s ease}
+  .video-progress button.active{width:48px;background:#fff}
+  @media(max-width:760px){
+    .home-hero{min-height:560px}
+    .hero-video{object-position:center center}
+    .hero-overlay{background:linear-gradient(180deg,rgba(0,0,0,.20),transparent 38%,rgba(0,0,0,.66) 100%)}
+    .quick-actions{left:14px;right:14px;bottom:20px;transform:none;justify-content:center}
+    .quick-actions a{flex:1;padding:0 10px;font-size:.61rem}
+    .video-progress{right:18px;bottom:82px}
+  }
 </style>
