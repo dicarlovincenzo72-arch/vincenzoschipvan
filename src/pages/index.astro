@@ -2,23 +2,139 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Vincenzo's Fish & Chips Van® | Central Scotland" description="Multi award-winning mobile fish and chips across Central Scotland.">
-<section class="hero">
-  <video id="v1" class="hero-video active" autoplay muted playsinline preload="auto" poster="/assets/images/press/van-queue.jpg"><source src="/assets/videos/doune-gala-main.mp4" type="video/mp4"></video>
-  <video id="v2" class="hero-video" muted playsinline preload="auto"><source src="/assets/videos/doune-gala-second.mp4" type="video/mp4"></video>
-  <div class="shade"></div>
-  <div class="hero-inner">
-    <p class="eyebrow">Vincenzo's Fish & Chips Van®</p>
-    <h1>Multi Award Winning<br><span>Mobile Fish & Chips</span></h1>
-    <p class="lead">Freshly cooked across Central Scotland for village stops, weddings, gala days and private events.</p>
-    <div class="actions"><a class="btn btn-red" href="/schedule">Find Us This Week</a><a class="btn btn-outline" href="/contact">Book Your Event</a></div>
-  </div>
-  <a class="scroll" href="#discover"><span>Discover</span><i></i></a>
-</section>
-<section id="discover" class="discover"><div class="container"><div class="intro"><p>More than a fish & chips van</p><h2>Recognised by customers, communities and the media.</h2></div><div class="cards"><a href="/awards"><small>01 · Awards & recognition</small><strong>Our Awards</strong><b>→</b></a><a href="/press"><small>02 · Newspapers & television</small><strong>In the Press</strong><b>→</b></a><a href="/community"><small>03 · Charity & local support</small><strong>Our Community</strong><b>→</b></a></div></div></section>
-<script is:inline>
-const a=document.getElementById('v1'),b=document.getElementById('v2');function show(next,prev){prev.pause();prev.classList.remove('active');next.currentTime=0;next.classList.add('active');next.play().catch(()=>{})}a?.addEventListener('ended',()=>show(b,a));b?.addEventListener('ended',()=>show(a,b));a?.play().catch(()=>{});
-</script>
+  <section class="hero" aria-label="Vincenzo's Fish & Chips Van">
+    <div class="video-stage" aria-hidden="true">
+      <video id="heroVideo1" class="hero-video is-active" autoplay muted playsinline preload="auto" poster="/assets/images/press/van-queue.jpg">
+        <source src="/assets/videos/doune-gala-main.mp4" type="video/mp4" />
+      </video>
+      <video id="heroVideo2" class="hero-video" muted playsinline preload="auto" poster="/assets/images/press/van-launch.jpg">
+        <source src="/assets/videos/doune-gala-second.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="hero-shade"></div>
+
+    <div class="hero-content container">
+      <div class="hero-copy">
+        <p class="eyebrow">Vincenzo's Fish & Chips Van®</p>
+        <h1>Scotland's multi award-winning <span>mobile fish & chips van</span></h1>
+        <p class="lead">Freshly cooked across Central Scotland for village stops, weddings, corporate events, gala days and private celebrations.</p>
+        <div class="actions">
+          <a class="btn btn-red" href="/schedule">Find Us Today</a>
+          <a class="btn btn-outline" href="/contact">Book Your Event</a>
+        </div>
+        <div class="trust-row" aria-label="Business highlights">
+          <span>Multi Award Winning</span>
+          <span>Fully Licensed & Insured</span>
+          <span>Silent Battery Powered Van</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-progress" aria-hidden="true">
+      <span id="videoDot1" class="active"></span><span id="videoDot2"></span>
+    </div>
+    <a class="scroll" href="#discover"><span>Discover</span><i></i></a>
+  </section>
+
+  <section id="discover" class="discover">
+    <div class="container">
+      <div class="intro">
+        <p>More than a fish & chips van</p>
+        <h2>A little black van with a big story.</h2>
+      </div>
+      <div class="cards">
+        <a href="/awards"><small>01 · Awards & recognition</small><strong>Our Awards</strong><b>→</b></a>
+        <a href="/press"><small>02 · Newspapers & television</small><strong>In the Press</strong><b>→</b></a>
+        <a href="/community"><small>03 · Charity & local support</small><strong>Our Community</strong><b>→</b></a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const videos = [document.getElementById('heroVideo1'), document.getElementById('heroVideo2')].filter(Boolean);
+      const dots = [document.getElementById('videoDot1'), document.getElementById('videoDot2')];
+      if (videos.length < 2) return;
+
+      let current = 0;
+      let changing = false;
+
+      videos.forEach((video) => {
+        video.muted = true;
+        video.playsInline = true;
+        video.loop = false;
+      });
+
+      const activate = async (nextIndex) => {
+        if (changing) return;
+        changing = true;
+        const previous = videos[current];
+        const next = videos[nextIndex];
+
+        try {
+          next.currentTime = 0;
+          await next.play();
+          next.classList.add('is-active');
+          previous.classList.remove('is-active');
+          window.setTimeout(() => previous.pause(), 900);
+          dots.forEach((dot, index) => dot?.classList.toggle('active', index === nextIndex));
+          current = nextIndex;
+        } catch (error) {
+          previous.play().catch(() => {});
+        } finally {
+          window.setTimeout(() => { changing = false; }, 950);
+        }
+      };
+
+      videos[0].addEventListener('ended', () => activate(1));
+      videos[1].addEventListener('ended', () => activate(0));
+
+      // Safety fallback: if a browser misses the ended event, switch at the actual duration.
+      videos.forEach((video, index) => {
+        video.addEventListener('timeupdate', () => {
+          if (index === current && video.duration && video.currentTime >= video.duration - 0.15) {
+            activate(index === 0 ? 1 : 0);
+          }
+        });
+      });
+
+      videos[0].play().catch(() => {
+        document.addEventListener('click', () => videos[current].play().catch(() => {}), { once: true });
+      });
+    })();
+  </script>
 </BaseLayout>
+
 <style>
-.hero{position:relative;min-height:100svh;overflow:hidden;background:#111;color:#fff}.hero-video,.shade{position:absolute;inset:0;width:100%;height:100%}.hero-video{object-fit:cover;opacity:0;visibility:hidden;transition:opacity .45s}.hero-video.active{opacity:1;visibility:visible}.shade{background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.35) 55%,rgba(0,0,0,.14)),linear-gradient(0deg,rgba(0,0,0,.55),transparent 45%)}.hero-inner{position:relative;z-index:2;width:min(1180px,calc(100% - 36px));min-height:100svh;margin:auto;padding:150px 0 110px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}.eyebrow{margin:0 0 18px;font-size:.72rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase}h1{max-width:980px;margin:0;font-size:clamp(3.3rem,7.4vw,7.3rem);line-height:.86;letter-spacing:-.06em;text-shadow:0 8px 30px rgba(0,0,0,.35)}h1 span{text-shadow:2px 0 var(--red),-2px 0 var(--red),0 2px var(--red),0 -2px var(--red),0 10px 32px rgba(0,0,0,.4)}.lead{max-width:650px;margin:24px 0 0;font-size:clamp(1rem,1.8vw,1.25rem);line-height:1.65;color:rgba(255,255,255,.9)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.scroll{position:absolute;z-index:3;left:50%;bottom:24px;transform:translateX(-50%);display:grid;justify-items:center;gap:8px;color:#fff;font-size:.58rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}.scroll i{width:1px;height:34px;background:#fff;animation:p 1.8s infinite}@keyframes p{0%,100%{transform:scaleY(.45);transform-origin:top;opacity:.45}50%{transform:scaleY(1);opacity:1}}.discover{padding:90px 0;background:var(--cream)}.intro{display:grid;grid-template-columns:.45fr 1fr;gap:60px;align-items:end;margin-bottom:42px}.intro p{margin:0;color:var(--red);font-size:.7rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.intro h2{max-width:850px;margin:0;font-size:clamp(2.4rem,4.8vw,4.9rem);line-height:.96;letter-spacing:-.052em}.cards{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.cards a{min-height:150px;padding:26px 24px;display:grid;grid-template-columns:1fr auto;align-content:center;gap:10px;border-right:1px solid var(--line);transition:.2s}.cards a:last-child{border-right:0}.cards a:hover{background:var(--charcoal);color:#fff}.cards small{grid-column:1/-1;color:#747474;font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.cards strong{font-size:1.45rem}.cards b{color:var(--red);font-size:1.35rem}@media(max-width:900px){.intro{grid-template-columns:1fr;gap:12px}.cards{grid-template-columns:1fr}.cards a{border-right:0;border-bottom:1px solid var(--line)}}@media(max-width:600px){.hero-inner{padding:115px 0 95px}.actions,.actions .btn{width:100%}.discover{padding:68px 0}}
+  .hero{position:relative;min-height:100svh;overflow:hidden;background:#080808;color:#fff;border-radius:0 0 22px 22px}
+  .video-stage,.hero-video,.hero-shade{position:absolute;inset:0;width:100%;height:100%}
+  .hero-video{object-fit:cover;opacity:0;transform:scale(1.015);transition:opacity .9s ease,transform 8s linear;pointer-events:none}
+  .hero-video.is-active{opacity:1;transform:scale(1.055)}
+  .hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.62) 42%,rgba(0,0,0,.28) 72%,rgba(0,0,0,.18) 100%),linear-gradient(0deg,rgba(0,0,0,.72),transparent 55%)}
+  .hero-content{position:relative;z-index:2;min-height:100svh;padding-top:150px;padding-bottom:115px;display:flex;align-items:center}
+  .hero-copy{width:min(790px,72vw)}
+  .eyebrow{margin:0 0 20px;font-size:.72rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+  h1{margin:0;font-size:clamp(3.3rem,6.5vw,6.85rem);line-height:.9;letter-spacing:-.062em;text-wrap:balance;text-shadow:0 12px 34px rgba(0,0,0,.45)}
+  h1 span{display:block;color:#fff;-webkit-text-stroke:1.5px var(--red);text-shadow:0 9px 26px rgba(0,0,0,.55)}
+  .lead{max-width:690px;margin:28px 0 0;font-size:clamp(1rem,1.5vw,1.22rem);line-height:1.65;color:rgba(255,255,255,.92)}
+  .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:31px}
+  .trust-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .trust-row span{padding:8px 11px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(0,0,0,.22);backdrop-filter:blur(8px);font-size:.62rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+  .video-progress{position:absolute;right:34px;bottom:32px;z-index:4;display:flex;gap:8px}
+  .video-progress span{width:28px;height:3px;border-radius:999px;background:rgba(255,255,255,.34);transition:.35s}
+  .video-progress span.active{width:54px;background:var(--red)}
+  .scroll{position:absolute;z-index:3;left:50%;bottom:23px;transform:translateX(-50%);display:grid;justify-items:center;gap:8px;color:#fff;font-size:.58rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+  .scroll i{width:1px;height:34px;background:#fff;animation:p 1.8s infinite}
+  @keyframes p{0%,100%{transform:scaleY(.45);transform-origin:top;opacity:.45}50%{transform:scaleY(1);opacity:1}}
+  .discover{padding:98px 0;background:var(--cream)}
+  .intro{display:grid;grid-template-columns:.45fr 1fr;gap:60px;align-items:end;margin-bottom:46px}
+  .intro p{margin:0;color:var(--red);font-size:.7rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+  .intro h2{max-width:850px;margin:0;font-size:clamp(2.5rem,4.8vw,4.9rem);line-height:.96;letter-spacing:-.052em}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cards a{min-height:158px;padding:27px 24px;display:grid;grid-template-columns:1fr auto;align-content:center;gap:10px;border-right:1px solid var(--line);transition:.25s}
+  .cards a:last-child{border-right:0}.cards a:hover{background:var(--charcoal);color:#fff;transform:translateY(-3px)}
+  .cards small{grid-column:1/-1;color:#747474;font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.cards strong{font-size:1.45rem}.cards b{color:var(--red);font-size:1.35rem}
+  @media(max-width:900px){.hero-copy{width:100%}.intro{grid-template-columns:1fr;gap:12px}.cards{grid-template-columns:1fr}.cards a{border-right:0;border-bottom:1px solid var(--line)}.video-progress{right:18px}}
+  @media(max-width:600px){.hero-content{padding-top:120px;padding-bottom:105px}.actions,.actions .btn{width:100%}.trust-row{display:none}.discover{padding:70px 0}.hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.45)),linear-gradient(0deg,rgba(0,0,0,.75),transparent 50%)}h1{font-size:clamp(3rem,15vw,4.6rem)}}
 </style>
