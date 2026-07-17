@@ -2,168 +2,155 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Vincenzo's Fish & Chips Van® | Central Scotland" description="Multi award-winning mobile fish and chips across Central Scotland.">
-  <section class="hero" aria-label="Vincenzo's Fish & Chips Van">
-    <div class="video-stage" aria-hidden="true">
-      <video id="heroVideo1" class="hero-video is-active" autoplay muted playsinline preload="auto" poster="/assets/images/press/van-queue.jpg">
-        <source src="/assets/videos/doune-gala-main.mp4" type="video/mp4" />
-      </video>
-      <video id="heroVideo2" class="hero-video" muted playsinline preload="auto" poster="/assets/images/press/van-launch.jpg">
-        <source src="/assets/videos/doune-gala-second.mp4" type="video/mp4" />
-      </video>
-    </div>
+  <main>
+    <section class="hero" aria-label="Vincenzo's Fish & Chips Van">
+      <div class="video-stage" aria-hidden="true">
+        <video id="heroVideo1" class="hero-video is-active" autoplay muted playsinline preload="auto">
+          <source src="/assets/videos/doune-gala-main.mp4" type="video/mp4" />
+        </video>
+        <video id="heroVideo2" class="hero-video" muted playsinline preload="auto">
+          <source src="/assets/videos/doune-gala-second.mp4" type="video/mp4" />
+        </video>
+        <div id="transitionGlow" class="transition-glow"></div>
+      </div>
 
-    <div class="hero-shade"></div>
+      <div class="hero-overlay"></div>
 
-    <div class="hero-content container">
-      <div class="hero-copy">
-        <p class="eyebrow">Vincenzo's Fish & Chips Van®</p>
-        <h1>Scotland's multi award-winning <span>mobile fish & chips van</span></h1>
-        <p class="lead">Freshly cooked across Central Scotland for village stops, weddings, corporate events, gala days and private celebrations.</p>
-        <div class="actions">
-          <a class="btn btn-red" href="/schedule">Find Us Today</a>
-          <a class="btn btn-outline" href="/contact">Book Your Event</a>
-        </div>
-        <div class="trust-row" aria-label="Business highlights">
-          <span>Multi Award Winning</span>
-          <span>Fully Licensed & Insured</span>
-          <span>Silent Battery Powered Van</span>
+      <div class="hero-content container">
+        <div class="hero-copy">
+          <p class="eyebrow">Vincenzo's Fish & Chips Van®</p>
+          <h1>Award-winning fish & chips, served across Central Scotland.</h1>
+          <p class="lead">Village stops, weddings, corporate events, gala days and private celebrations — freshly cooked from the little black van.</p>
+          <div class="actions">
+            <a class="btn btn-red" href="/schedule">Find Us Today</a>
+            <a class="btn btn-light" href="/contact">Book an Event</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="video-progress" aria-label="Video progress">
-      <button id="videoDot1" class="active" aria-label="Play first video"></button>
-      <button id="videoDot2" aria-label="Play second video"></button>
-    </div>
-    <a class="scroll" href="#discover"><span>Discover</span><i></i></a>
-  </section>
-
-  <section id="discover" class="discover">
-    <div class="container">
-      <div class="intro">
-        <p>More than a fish & chips van</p>
-        <h2>A little black van with a big story.</h2>
+      <div class="hero-footer">
+        <div class="hero-footer-inner container">
+          <div class="proof"><strong>Multi Award Winning</strong><span>Recognised across Central Scotland</span></div>
+          <div class="proof"><strong>Fully Licensed & Insured</strong><span>Professional event catering</span></div>
+          <div class="proof"><strong>Silent Battery Powered</strong><span>No noisy generator</span></div>
+          <div class="video-progress" aria-label="Choose hero video">
+            <button id="videoDot1" class="active" aria-label="Play first video"></button>
+            <button id="videoDot2" aria-label="Play second video"></button>
+          </div>
+        </div>
       </div>
-      <div class="cards">
-        <a href="/awards"><small>01 · Awards & recognition</small><strong>Our Awards</strong><b>→</b></a>
-        <a href="/press"><small>02 · Newspapers & television</small><strong>In the Press</strong><b>→</b></a>
-        <a href="/community"><small>03 · Charity & local support</small><strong>Our Community</strong><b>→</b></a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="feature-band">
-    <div class="container feature-grid">
-      <div class="feature-copy">
-        <p class="section-kicker">Built for memorable events</p>
-        <h2>Fresh food, a silent van and service people remember.</h2>
-        <p>From village stops and gala days to weddings and corporate catering, every order is cooked fresh from our little black van.</p>
-        <a class="text-link" href="/events">Explore events <span>→</span></a>
+    <section class="quick-links" aria-label="Quick links">
+      <div class="container quick-grid">
+        <a href="/schedule"><span>01</span><strong>Where we are this week</strong><b>Find Us →</b></a>
+        <a href="/menu"><span>02</span><strong>Freshly cooked favourites</strong><b>View Menu →</b></a>
+        <a href="/events"><span>03</span><strong>Weddings, parties and events</strong><b>Events →</b></a>
+        <a href="/contact"><span>04</span><strong>Tell us about your event</strong><b>Contact →</b></a>
       </div>
-      <div class="feature-image"><img src="/assets/images/press/van-launch.jpg" alt="Vincenzo's Fish & Chips Van at an event" loading="lazy"></div>
-    </div>
-  </section>
-
-  <section class="home-cta">
-    <div class="container cta-inner">
-      <div><p class="section-kicker">Find the little black van</p><h2>See where we are serving this week.</h2></div>
-      <a class="btn btn-red" href="/schedule">View This Week's Stops</a>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <script is:inline>
     (() => {
       const videos = [document.getElementById('heroVideo1'), document.getElementById('heroVideo2')].filter(Boolean);
       const dots = [document.getElementById('videoDot1'), document.getElementById('videoDot2')];
+      const glow = document.getElementById('transitionGlow');
       if (videos.length !== 2) return;
 
       let current = 0;
       let switching = false;
+      const transitionMs = 1450;
 
       videos.forEach((video) => {
         video.muted = true;
         video.playsInline = true;
         video.loop = false;
-        video.removeAttribute('loop');
       });
 
-      const setActive = async (index) => {
-        if (switching || index === current) return;
+      const setActive = async (next) => {
+        if (switching || next === current) return;
         switching = true;
         const outgoing = videos[current];
-        const incoming = videos[index];
+        const incoming = videos[next];
+
         try {
           incoming.currentTime = 0;
           await incoming.play();
-          incoming.classList.add('is-active');
-          outgoing.classList.remove('is-active');
-          dots.forEach((dot, i) => dot?.classList.toggle('active', i === index));
-          window.setTimeout(() => outgoing.pause(), 850);
-          current = index;
-        } catch (e) {
+          glow?.classList.remove('animate');
+          void glow?.offsetWidth;
+          glow?.classList.add('animate');
+          document.querySelector('.hero')?.classList.add('is-transitioning');
+          incoming.classList.add('is-entering', 'is-active');
+          outgoing.classList.add('is-leaving');
+          dots.forEach((dot, i) => dot?.classList.toggle('active', i === next));
+
+          window.setTimeout(() => {
+            outgoing.classList.remove('is-active', 'is-leaving');
+            outgoing.pause();
+            incoming.classList.remove('is-entering');
+            document.querySelector('.hero')?.classList.remove('is-transitioning');
+            current = next;
+            switching = false;
+          }, transitionMs);
+        } catch {
+          switching = false;
           outgoing.play().catch(() => {});
         }
-        window.setTimeout(() => { switching = false; }, 900);
       };
-
-      videos[0].addEventListener('ended', () => setActive(1));
-      videos[1].addEventListener('ended', () => setActive(0));
-      dots[0]?.addEventListener('click', () => setActive(0));
-      dots[1]?.addEventListener('click', () => setActive(1));
 
       videos.forEach((video, index) => {
         video.addEventListener('timeupdate', () => {
-          if (index === current && Number.isFinite(video.duration) && video.duration > 0 && video.currentTime >= video.duration - 0.12) {
-            setActive(index === 0 ? 1 : 0);
-          }
+          if (index !== current || switching || !Number.isFinite(video.duration)) return;
+          if (video.duration - video.currentTime <= 1.35) setActive(index === 0 ? 1 : 0);
         });
       });
 
-      const start = () => videos[0].play().catch(() => {});
-      start();
+      dots[0]?.addEventListener('click', () => setActive(0));
+      dots[1]?.addEventListener('click', () => setActive(1));
+      videos[0].play().catch(() => {});
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden) videos[current].play().catch(() => {});
       });
-      document.addEventListener('pointerdown', start, { once: true });
+      document.addEventListener('pointerdown', () => videos[current].play().catch(() => {}), { once: true });
     })();
   </script>
 </BaseLayout>
 
 <style>
-  .hero{position:relative;min-height:100svh;overflow:hidden;background:#080808;color:#fff;border-radius:0 0 22px 22px}
-  .video-stage,.hero-video,.hero-shade{position:absolute;inset:0;width:100%;height:100%}
-  .hero-video{object-fit:cover;opacity:0;transform:scale(1.01);transition:opacity .8s ease,transform 9s linear;pointer-events:none}
-  .hero-video.is-active{opacity:1;transform:scale(1.045)}
-  .hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.84) 0%,rgba(0,0,0,.68) 39%,rgba(0,0,0,.30) 70%,rgba(0,0,0,.16) 100%),linear-gradient(0deg,rgba(0,0,0,.72),transparent 56%)}
-  .hero-content{position:relative;z-index:2;min-height:100svh;padding-top:132px;padding-bottom:108px;display:flex;align-items:center}
-  .hero-copy{width:min(680px,65vw)}
-  .eyebrow{margin:0 0 17px;font-size:.7rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:#fff}
-  h1{margin:0;max-width:680px;font-size:clamp(3rem,5.35vw,5.6rem);line-height:.92;letter-spacing:-.056em;text-wrap:balance;text-shadow:0 12px 34px rgba(0,0,0,.46)}
-  h1 span{display:block;color:#fff;-webkit-text-stroke:1.15px var(--red);text-shadow:0 9px 26px rgba(0,0,0,.55)}
-  .lead{max-width:620px;margin:24px 0 0;font-size:clamp(1rem,1.35vw,1.15rem);line-height:1.62;color:rgba(255,255,255,.92)}
-  .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
-  .trust-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}
-  .trust-row span{padding:8px 11px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(0,0,0,.23);backdrop-filter:blur(8px);font-size:.59rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.9)}
-  .video-progress{position:absolute;right:32px;bottom:28px;z-index:4;display:flex;gap:8px}
-  .video-progress button{appearance:none;border:0;padding:0;width:30px;height:4px;border-radius:999px;background:rgba(255,255,255,.36);transition:.35s;cursor:pointer}
-  .video-progress button.active{width:54px;background:var(--red)}
-  .scroll{position:absolute;z-index:3;left:50%;bottom:20px;transform:translateX(-50%);display:grid;justify-items:center;gap:8px;color:#fff;font-size:.56rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
-  .scroll i{width:1px;height:32px;background:#fff;animation:p 1.8s infinite}
-  @keyframes p{0%,100%{transform:scaleY(.45);transform-origin:top;opacity:.45}50%{transform:scaleY(1);opacity:1}}
-  .discover{padding:96px 0;background:var(--cream)}
-  .intro{display:grid;grid-template-columns:.42fr 1fr;gap:60px;align-items:end;margin-bottom:44px}
-  .intro p,.section-kicker{margin:0;color:var(--red);font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
-  .intro h2,.feature-copy h2,.cta-inner h2{margin:0;font-size:clamp(2.45rem,4.5vw,4.65rem);line-height:.97;letter-spacing:-.05em}
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .cards a{min-height:156px;padding:27px 24px;display:grid;grid-template-columns:1fr auto;align-content:center;gap:10px;border-right:1px solid var(--line);transition:.25s}
-  .cards a:last-child{border-right:0}.cards a:hover{background:var(--charcoal);color:#fff;transform:translateY(-3px)}
-  .cards small{grid-column:1/-1;color:#747474;font-size:.67rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.cards strong{font-size:1.4rem}.cards b{color:var(--red);font-size:1.3rem}
-  .feature-band{padding:92px 0;background:#111;color:#fff}
-  .feature-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
-  .feature-copy h2{margin-top:16px;max-width:580px}.feature-copy>p:not(.section-kicker){max-width:570px;color:rgba(255,255,255,.72);font-size:1.04rem;line-height:1.7}
-  .text-link{display:inline-flex;gap:10px;margin-top:16px;font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.text-link span{color:var(--red)}
-  .feature-image{overflow:hidden;border-radius:22px;aspect-ratio:16/10}.feature-image img{width:100%;height:100%;object-fit:cover;transition:.45s}.feature-image:hover img{transform:scale(1.025)}
-  .home-cta{padding:72px 0;background:var(--cream)}.cta-inner{display:flex;align-items:end;justify-content:space-between;gap:35px}.cta-inner h2{max-width:760px;margin-top:13px;font-size:clamp(2.2rem,4vw,4rem)}
-  @media(max-width:980px){.hero-copy{width:min(690px,78vw)}.feature-grid{grid-template-columns:1fr;gap:38px}.cta-inner{align-items:flex-start;flex-direction:column}.intro{grid-template-columns:1fr;gap:12px}.cards{grid-template-columns:1fr}.cards a{border-right:0;border-bottom:1px solid var(--line)}}
-  @media(max-width:700px){.hero-content{padding-top:118px;padding-bottom:112px;align-items:flex-end}.hero-copy{width:100%}h1{font-size:clamp(2.85rem,13vw,4.3rem);max-width:100%}.lead{font-size:1rem;line-height:1.55}.actions,.actions .btn{width:100%}.trust-row{display:none}.video-progress{right:18px;bottom:24px}.scroll{display:none}.discover,.feature-band{padding:68px 0}.hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.40)),linear-gradient(0deg,rgba(0,0,0,.78),transparent 55%)}.feature-image{aspect-ratio:4/3}}
+  .hero{position:relative;min-height:100svh;overflow:hidden;background:#181818;color:#fff}
+  .video-stage,.hero-video,.hero-overlay{position:absolute;inset:0;width:100%;height:100%}
+  .hero-video{object-fit:cover;opacity:0;transform:scale(1.025);filter:saturate(1.06) contrast(1.02);transition:opacity 1.45s cubic-bezier(.22,.61,.36,1),transform 9s linear,filter 1.45s ease;will-change:opacity,transform,filter}
+  .hero-video.is-active{opacity:1;transform:scale(1.075)}
+  .hero-video.is-entering{animation:cinematicIn 1.45s cubic-bezier(.22,.61,.36,1) both}
+  .hero-video.is-leaving{animation:cinematicOut 1.45s cubic-bezier(.22,.61,.36,1) both}
+  @keyframes cinematicIn{0%{opacity:0;filter:blur(9px) saturate(.75) brightness(1.28);transform:scale(1.12)}45%{opacity:.45}100%{opacity:1;filter:blur(0) saturate(1.06) brightness(1);transform:scale(1.055)}}
+  @keyframes cinematicOut{0%{opacity:1;filter:blur(0) brightness(1)}100%{opacity:0;filter:blur(5px) brightness(.78);transform:scale(1.09)}}
+  .transition-glow{position:absolute;top:-15%;bottom:-15%;left:-40%;width:38%;opacity:0;transform:skewX(-12deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.17),rgba(255,255,255,.42),rgba(201,0,34,.16),transparent);filter:blur(18px);pointer-events:none;z-index:3}
+  .transition-glow.animate{animation:lightSweep 1.45s cubic-bezier(.22,.61,.36,1)}
+  @keyframes lightSweep{0%{left:-42%;opacity:0}22%{opacity:.72}100%{left:112%;opacity:0}}
+  .hero-overlay{z-index:4;background:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.34) 43%,rgba(0,0,0,.08) 78%),linear-gradient(0deg,rgba(0,0,0,.52) 0%,transparent 43%);transition:background 1s ease}
+  .hero.is-transitioning .hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.48) 0%,rgba(0,0,0,.27) 43%,rgba(0,0,0,.05) 78%),linear-gradient(0deg,rgba(0,0,0,.46) 0%,transparent 43%)}
+  .hero-content{position:relative;z-index:5;min-height:calc(100svh - 116px);padding-top:122px;padding-bottom:92px;display:flex;align-items:center}
+  .hero-copy{max-width:610px}
+  .eyebrow{margin:0 0 16px;font-size:.67rem;font-weight:900;letter-spacing:.19em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+  h1{margin:0;max-width:600px;font-size:clamp(2.45rem,4.4vw,4.55rem);line-height:1.01;letter-spacing:-.047em;text-wrap:balance;text-shadow:0 10px 32px rgba(0,0,0,.38)}
+  .lead{max-width:570px;margin:20px 0 0;font-size:clamp(.98rem,1.2vw,1.12rem);line-height:1.62;color:rgba(255,255,255,.92);text-shadow:0 4px 18px rgba(0,0,0,.25)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn-light{background:rgba(255,255,255,.94);color:#151515;border-color:#fff}.btn-light:hover{background:#fff;color:var(--red)}
+  .hero-footer{position:absolute;z-index:6;left:0;right:0;bottom:0;border-top:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.20);backdrop-filter:blur(12px)}
+  .hero-footer-inner{min-height:116px;display:grid;grid-template-columns:repeat(3,1fr) auto;align-items:center;gap:30px}
+  .proof{display:grid;gap:5px}.proof strong{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}.proof span{font-size:.75rem;color:rgba(255,255,255,.68)}
+  .video-progress{display:flex;gap:7px;align-items:center}
+  .video-progress button{appearance:none;border:0;padding:0;width:27px;height:4px;border-radius:999px;background:rgba(255,255,255,.36);cursor:pointer;transition:.35s}
+  .video-progress button.active{width:48px;background:var(--red)}
+  .quick-links{background:#fff;padding:28px 0 36px}
+  .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #e7e2dc;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(23,23,23,.06)}
+  .quick-grid a{min-height:142px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #e7e2dc;background:#fff;transition:.25s}
+  .quick-grid a:last-child{border-right:0}.quick-grid a:hover{background:#f7f4ef;transform:translateY(-3px)}
+  .quick-grid span{font-size:.65rem;font-weight:900;letter-spacing:.13em;color:var(--red)}
+  .quick-grid strong{font-size:1.05rem;line-height:1.25;max-width:210px}.quick-grid b{font-size:.68rem;letter-spacing:.09em;text-transform:uppercase}
+  @media(max-width:960px){.hero-footer-inner{grid-template-columns:repeat(3,1fr);gap:18px}.video-progress{position:absolute;right:18px;top:-30px}.quick-grid{grid-template-columns:repeat(2,1fr)}.quick-grid a:nth-child(2){border-right:0}.quick-grid a:nth-child(-n+2){border-bottom:1px solid #e7e2dc}}
+  @media(max-width:700px){.hero{min-height:100svh}.hero-content{min-height:calc(100svh - 92px);padding-top:105px;padding-bottom:130px;align-items:flex-end}.hero-copy{max-width:100%}h1{font-size:clamp(2.25rem,10.6vw,3.5rem);line-height:1.01}.lead{font-size:.97rem;line-height:1.55}.actions{width:100%}.actions .btn{flex:1;min-width:145px;padding-inline:16px}.hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.16)),linear-gradient(0deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.15) 63%)}.hero-footer-inner{min-height:92px;grid-template-columns:1fr}.proof{display:none}.video-progress{position:static;justify-self:end}.quick-links{padding:18px 0 26px}.quick-grid{grid-template-columns:1fr}.quick-grid a{min-height:112px;border-right:0;border-bottom:1px solid #e7e2dc}.quick-grid a:last-child{border-bottom:0}}
+  @media(prefers-reduced-motion:reduce){.hero-video,.transition-glow{animation:none!important;transition:none!important}}
 </style>
