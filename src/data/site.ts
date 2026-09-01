@@ -9,12 +9,32 @@ export const schedule=[
 ];
 
 export const menuSections=[
-  ['Fish & Chip Shop Favourites',['Regular Fish','Large Fish','Regular Special Fish','Large Special Fish','Sausage (2)','Smoked Sausage','Hamburger (2)','Steak Pie','King Rib','Haggis Pudding','White Pudding','Black Pudding','Scampi (10)']],
-  ['Pizza',['Half Pizza','Full Pizza','Half Pizza Crunch','Full Pizza Crunch']],
-  ['Extras',['Chicken Nuggets (10)','Chicken Goujons (6)','Onion Rings (10)','Potato Fritters (5)','Fritter Roll']],
-  ['Chips & Sides',['Regular Chips','Large Chips','Chip Roll','Add Cheese, Curry or Gravy to a Supper','Pickled Onion','Heinz Mayo','Heinz Tartare Sauce','Heinz Ketchup']],
-  ['Kids Meals',['Quarter Pizza & Chips','Chicken Nuggets (4) & Chips','Sausage (1) & Chips','Hamburger (1) & Chips']],
-  ['Drinks',['Cans','Bottled Water']]
+  {name:'Chip Shop',columns:['Single','Supper'],items:[
+    ['Regular Fish (1)','£6.50','£10.00'],['Regular Special Fish (1)','£7.00','£10.50'],
+    ['Sausage (2)','£4.00','£7.50'],['Smoked Sausage','£4.00','£7.50'],
+    ['Hamburger (2)','£4.50','£8.00'],['Steak Pie','£4.00','£7.50'],['King Rib','£4.00','£7.50'],
+    ['Haggis Pudding','£4.00','£7.50'],['White Pudding','£4.00','£7.50'],['Black Pudding','£4.00','£7.50'],
+    ['Scampi (10)','£5.00','£8.50'],['1/2 Pizza','£4.00','£7.50'],['1/2 Pizza Crunch','£4.50','£8.00']
+  ]},
+  {name:'Extra Dishes',columns:['Single','Supper'],items:[
+    ['Nuggets (10)','£5.00','£8.50'],['Chicken Goujons (6)','£5.00','£8.50'],['Onion Rings (10)','£4.00','£7.50']
+  ]},
+  {name:'Kids Menu',columns:['Price'],items:[
+    ['1/2 Pizza & Chips','£5.00'],['Chicken Nuggets (4) & Chips','£5.00'],
+    ['Sausage (1) & Chips','£5.00'],['Hamburger (1) & Chips','£5.00']
+  ]},
+  {name:'Chips & Sides',columns:['Price'],items:[
+    ['Regular Chips','£3.50'],['Large Chips','£4.50'],['Chips & Cheese','£5.00'],
+    ['Chips & Curry Sauce','£5.00'],['Chips Cheese Curry','£6.00'],['Chips & Gravy','£6.00'],
+    ['Chips Cheese Gravy','£5.00'],['Chips & Peas','£5.00'],['Chip Roll','£4.00']
+  ]},
+  {name:'Extra Additions',columns:['Price'],items:[
+    ['Add Cheese, Curry or Gravy to Supper','£2.00'],['8oz Tub — Curry, Gravy, Mushy Peas or Cheese','£2.50']
+  ]},
+  {name:'Drinks & Sauces',columns:['Price'],items:[
+    ['Can of Juice','£1.50'],['Bottle of Water','£1.00'],
+    ['Heinz SqueezeMe — Mayonnaise, Tartare Sauce or Ketchup','£1.00']
+  ]}
 ];
 
 export const awards=[
