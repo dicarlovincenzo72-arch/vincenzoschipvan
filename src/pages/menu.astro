@@ -1,16 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const sections = [
-['Chip Shop',['Regular Fish','Large Fish','Regular Special Fish','Large Special Fish','Sausage (2)','Smoked Sausage','Hamburger (2)','Steak Pie','King Rib','Haggis Pudding','White Pudding','Black Pudding','Scampi (10)','½ Pizza','Full Pizza','½ Pizza Crunch','Full Pizza Crunch']],
-['Extra',['Chicken Nuggets (10)','Chicken Goujons (6)','Onion Rings (10)','Potato Fritters (5)','Fritter Roll']],
-['Chips & Sides',['Regular Chips','Large Chips','Chips & Cheese','Chips & Curry','Chips Cheese Curry','Chips & Gravy','Chips Cheese Gravy','Chips & Peas','Chip Roll']],
-['Kids',['¼ Pizza & Chips','Nuggets (4) & Chips','Sausage (1) & Chips','Hamburger (1) & Chips']],
-['Drinks',['Cans','Water']]
-];
+import {menuSections} from '../data/site';
 ---
-<BaseLayout title="Menu | Vincenzo's Fish & Chips Van">
-<section class="page-hero"><div class="container"><div class="kicker">Freshly cooked</div><h1 class="page-title">Our Menu</h1><p class="lead">Traditional chip-shop favourites cooked fresh from the little black van.</p></div></section>
-<section class="section"><div class="container menu-grid">{sections.map(([name,items])=><article class="menu-section card"><h2>{name}</h2><ul>{items.map(item=><li>{item}</li>)}</ul></article>)}</div>
-<div class="container dietary"><strong>Dietary information</strong><p>Our food is fried in beef dripping. We do not currently offer gluten-free food because of cross-contamination risk and limited space. White pudding is vegetarian.</p></div></section>
+<BaseLayout title="Menu | Vincenzo's Fish & Chips Van" description="Traditional fish and chips, suppers, kids meals and sides freshly cooked by Vincenzo's Fish & Chips Van.">
+<section class="page-hero"><div class="container"><div class="kicker">Freshly cooked to order</div><h1 class="page-title">Our Menu</h1><p class="lead">Traditional chip-shop favourites, generous portions and the unmistakable taste of food cooked in beef dripping.</p></div></section>
+<section class="section"><div class="container menu-grid">{menuSections.map(([name,items],i)=><article class="menu-section card"><div class="menu-head"><span>{String(i+1).padStart(2,'0')}</span><h2>{name}</h2></div><ul>{items.map(item=><li>{item}</li>)}</ul></article>)}</div></section>
+<section class="section section-dark"><div class="container"><div class="kicker">Important dietary information</div><h2 class="section-title">Please ask before ordering.</h2><div class="diet-grid"><article><strong>Beef dripping</strong><p>Our fryers use traditional beef dripping. Chips and fried products are therefore not vegan or vegetarian.</p></article><article><strong>Gluten</strong><p>We cannot currently offer gluten-free food because our compact van kitchen cannot guarantee against cross-contamination.</p></article><article><strong>White pudding</strong><p>Our white pudding is vegetarian, but please ask us about cooking and cross-contamination before ordering.</p></article></div><p class="allergy">Tell us about any allergy or dietary requirement before you order. Product availability can vary at events and public stops.</p></div></section>
 </BaseLayout>
-<style>.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.menu-section{padding:25px}.menu-section h2{color:var(--red);font-size:2rem}.menu-section ul{columns:2;padding-left:20px;line-height:1.8}.dietary{margin-top:24px;padding:24px;background:var(--gold);border-radius:18px}.dietary p{margin-bottom:0;line-height:1.65}@media(max-width:750px){.menu-grid{grid-template-columns:1fr}.menu-section ul{columns:1}}</style>
+<style>.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.menu-section{padding:26px}.menu-head{display:flex;align-items:flex-start;gap:16px}.menu-head span{padding-top:8px;color:var(--red);font-size:.68rem;font-weight:900}.menu-section h2{margin:0;font-family:Georgia,serif;font-size:2rem}.menu-section ul{columns:2;column-gap:34px;margin:25px 0 0;padding:0;list-style:none}.menu-section li{break-inside:avoid;padding:9px 0;border-bottom:1px solid #eee}.diet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}.diet-grid article{padding:25px;border:1px solid #333;border-radius:20px;background:#191919}.diet-grid strong{color:#ff6268}.diet-grid p{color:#bbb}.allergy{margin-top:24px;color:#ddd}@media(max-width:800px){.menu-grid,.diet-grid{grid-template-columns:1fr}.menu-section ul{columns:1}}
+</style>

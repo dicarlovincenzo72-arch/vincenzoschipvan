@@ -1,10 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const photos=[
+  ['/assets/images/press/van-launch.jpg','The real little black van at launch'],
+  ['/assets/images/press/van-queue.jpg','A real queue at a Vincenzo’s event'],
+  ['/assets/images/award-group-1.jpg','Vincenzo receiving an award'],
+  ['/assets/images/award-stage.jpg','Award ceremony stage'],
+  ['/assets/images/double-award.jpg','The two Central Scotland awards'],
+  ['/assets/images/award-group-2.jpg','A proud awards-night group photograph']
+];
 ---
-<BaseLayout title="Gallery | Vincenzo's Fish & Chips Van">
-<section class="page-hero"><div class="container"><div class="kicker">Vincenzo's</div><h1 class="page-title">Gallery</h1><p class="lead">Real photographs and videos from our work.</p></div></section>
-<section class="section"><div class="container media-grid"><article class="card placeholder"><h2>Page being rebuilt in Astro</h2><p>This route is active and ready for your real photographs and content.</p></article></div></section>
+<BaseLayout title="Gallery | Vincenzo's Fish & Chips Van" description="Real photographs and videos from Vincenzo's Fish & Chips Van, our events and award-winning journey.">
+<section class="page-hero"><div class="container"><div class="kicker">100% real</div><h1 class="page-title">Gallery</h1><p class="lead">No stock photography and no invented crowds — only our van, our work and the people who have shared the journey.</p></div></section>
+<section class="section"><div class="container"><div class="kicker">On the road</div><h2 class="section-title">The little black van in action.</h2><div class="video-grid"><article><video controls muted playsinline preload="metadata" poster="/assets/images/press/van-queue.jpg" src="/assets/videos/doune-gala-main.mp4"></video><h3>Doune Gala Day — the crowd</h3></article><article><video controls muted playsinline preload="metadata" poster="/assets/images/press/van-launch.jpg" src="/assets/videos/doune-gala-second.mp4"></video><h3>Doune Gala Day — the van</h3></article></div></div></section>
+<section class="section section-cream"><div class="container"><div class="photo-grid">{photos.map(([src,alt])=><figure><img src={src} alt={alt} loading="lazy"><figcaption>{alt}</figcaption></figure>)}</div></div></section>
 </BaseLayout>
-<style>
-.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.media-card video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.media-card h2,.placeholder{padding:22px}.placeholder{min-height:260px}@media(max-width:750px){.media-grid{grid-template-columns:1fr}}
+<style>.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:42px}.video-grid article{overflow:hidden;border-radius:22px;background:#111;color:#fff}.video-grid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.video-grid h3{margin:0;padding:20px}.photo-grid{columns:3 280px;column-gap:16px}.photo-grid figure{break-inside:avoid;margin:0 0 16px;overflow:hidden;border-radius:19px;background:#111;color:#fff}.photo-grid img{width:100%}.photo-grid figcaption{padding:14px;font-size:.8rem}@media(max-width:750px){.video-grid{grid-template-columns:1fr}}
 </style>

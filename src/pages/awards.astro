@@ -1,10 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import {awards} from '../data/site';
+const photos=[
+  ['/assets/images/award-group-1.jpg','Vincenzo receiving a Scottish Fish & Chip Award'],
+  ['/assets/images/award-stage.jpg','Vincenzo and fellow award winners on stage'],
+  ['/assets/images/double-award.jpg','Vincenzo with his two Central Scotland awards'],
+  ['/assets/images/award-group-2.jpg','The real awards ceremony group photograph'],
+  ['/assets/images/winner.jpg','Vincenzo proudly holding the awards'],
+  ['/assets/images/daily-record-award.jpg','Newspaper coverage of Vincenzo’s award success']
+];
 ---
-<BaseLayout title="Awards | Vincenzo's Fish & Chips Van">
-<section class="page-hero"><div class="container"><div class="kicker">Vincenzo's</div><h1 class="page-title">Awards</h1><p class="lead">Recognition earned through quality, hard work and community support.</p></div></section>
-<section class="section"><div class="container media-grid"><article class="card placeholder"><h2>Page being rebuilt in Astro</h2><p>This route is active and ready for your real photographs and content.</p></article></div></section>
+<BaseLayout title="Awards | Vincenzo's Fish & Chips Van" description="The real awards and recognition earned by Vincenzo's Fish & Chips in Stirling and Central Scotland.">
+<section class="page-hero"><div class="container"><div class="kicker">Proudly earned</div><h1 class="page-title">Our Awards</h1><p class="lead">Recognition for quality, consistency, hard work and the support of the communities that have stood beside us.</p></div></section>
+<section class="section section-dark"><div class="container award-list">{awards.map(([title,place],i)=><article><span>{String(i+1).padStart(2,'0')}</span><div><h2>{title}</h2><p>{place}</p></div></article>)}</div></section>
+<section class="section"><div class="container"><div class="kicker">The real moments</div><h2 class="section-title">Proud nights we will never forget.</h2><div class="photo-grid">{photos.map(([src,alt])=><figure><img src={src} alt={alt} loading="lazy"><figcaption>{alt}</figcaption></figure>)}</div></div></section>
+<section class="section-tight section-cream"><div class="container award-note"><img src="/assets/images/logo-original.png" alt="Vincenzo's original registered logo"><div><strong>Thank you.</strong><p>Every award belongs to the customers, communities and team who helped make Vincenzo’s what it is today.</p></div></div></section>
 </BaseLayout>
-<style>
-.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.media-card video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.media-card h2,.placeholder{padding:22px}.placeholder{min-height:260px}@media(max-width:750px){.media-grid{grid-template-columns:1fr}}
+<style>.award-list{display:grid;gap:2px}.award-list article{display:grid;grid-template-columns:90px 1fr;align-items:center;padding:28px 0;border-bottom:1px solid #333}.award-list span{color:#ff5d63;font-size:.72rem;font-weight:900}.award-list h2{margin:0;font-family:Georgia,serif;font-size:clamp(2rem,5vw,4.3rem);line-height:1}.award-list p{margin:9px 0 0;color:#aaa}.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}.photo-grid figure{margin:0;overflow:hidden;border-radius:20px;background:#111;color:#fff}.photo-grid img{width:100%;height:280px;object-fit:cover}.photo-grid figcaption{padding:15px;font-size:.8rem}.award-note{display:flex;align-items:center;gap:25px}.award-note img{width:110px}.award-note strong{font-family:Georgia,serif;font-size:2rem}.award-note p{margin:5px 0;color:var(--soft)}@media(max-width:850px){.photo-grid{grid-template-columns:1fr 1fr}}@media(max-width:550px){.photo-grid{grid-template-columns:1fr}.award-list article{grid-template-columns:45px 1fr}.award-note{flex-direction:column;text-align:center}}
 </style>

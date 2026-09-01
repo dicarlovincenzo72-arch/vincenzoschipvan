@@ -1,15 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const stories = [
-['The Courier','Wheeler Dealers stars visit Vincenzo’s','/assets/images/press/mike-brewer.jpg'],
-['The Courier','Double award win for Vincenzo’s','/assets/images/best-fish-supper.jpg'],
-['Scottish Press','The launch of the little black van','/assets/images/press/van-launch.jpg'],
-['Local Press','Queues for Vincenzo’s Fish & Chips Van','/assets/images/press/van-queue.jpg'],
-['Scottish Fish & Chip Awards','Best Fish Supper and Best Chip Shop Central','/assets/images/double-award.jpg']
+const stories=[
+  ['Wheeler Dealers visit','Mike Brewer and the team joined Vincenzo for a very special moment at the little black van.','/assets/images/press/mike-brewer.jpg'],
+  ['Double award success','Best Fish Supper and Best Chip Shop in Central Scotland.','/assets/images/daily-record-award.jpg'],
+  ['The little black van launches','A new mobile chapter for Vincenzo, Giuliana and the business.','/assets/images/press/van-launch.jpg'],
+  ['The queues tell the story','Communities across Central Scotland welcome Vincenzo’s to their villages and events.','/assets/images/press/van-queue.jpg'],
+  ['Scottish Fish & Chip Awards','Proud recognition for quality, hard work and consistency.','/assets/images/double-award.jpg'],
+  ['Best Fish & Chip Shop — Stirling','A proud award shared with customers, staff and the local community.','/assets/images/press-awards.jpg']
 ];
 ---
-<BaseLayout title="In the Press | Vincenzo's Fish & Chips Van">
-<section class="page-hero"><div class="container"><div class="kicker">Media archive</div><h1 class="page-title">In the Press</h1><p class="lead">Newspapers, television, awards, charity and community coverage.</p></div></section>
-<section class="section"><div class="container press-grid">{stories.map(story=><article class="press-card card"><img src={story[2]} alt={story[1]}><div><span>{story[0]}</span><h2>{story[1]}</h2><p>Open the story inside the Vincenzo’s media archive.</p></div></article>)}</div></section>
+<BaseLayout title="In the Press | Vincenzo's Fish & Chips Van" description="Press, media and notable moments from Vincenzo's award-winning fish and chips journey.">
+<section class="page-hero"><div class="container"><div class="kicker">Media archive</div><h1 class="page-title">In the Press</h1><p class="lead">Newspapers, television, awards and the special moments that have helped tell our story.</p></div></section>
+<section class="section"><div class="container press-grid">{stories.map(([title,copy,image],i)=><article class="press-card card"><img src={image} alt={title} loading="lazy"><div><span>Story {String(i+1).padStart(2,'0')}</span><h2>{title}</h2><p>{copy}</p></div></article>)}</div></section>
+<section class="section-tight section-dark"><div class="container press-contact"><div><div class="kicker">Media enquiries</div><h2>Would you like to feature our story?</h2></div><a class="button button-red" href="mailto:info@vincenzosfishandchips.com?subject=Media%20Enquiry">Contact us</a></div></section>
 </BaseLayout>
-<style>.press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.press-card img{width:100%;height:245px;object-fit:cover}.press-card div{padding:22px}.press-card span{color:var(--red);font-size:.69rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.press-card h2{font-size:1.45rem;margin:9px 0}.press-card p{color:var(--muted);line-height:1.55}@media(max-width:850px){.press-grid{grid-template-columns:1fr}}</style>
+<style>.press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.press-card img{width:100%;height:285px;object-fit:cover}.press-card div{padding:23px}.press-card span{color:var(--red);font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.press-card h2{margin:12px 0 8px;font-family:Georgia,serif;font-size:1.65rem;line-height:1.05}.press-card p{color:var(--soft)}.press-contact{display:flex;align-items:center;justify-content:space-between;gap:24px}.press-contact h2{margin:0;font-family:Georgia,serif;font-size:clamp(2rem,4vw,3.5rem)}@media(max-width:900px){.press-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.press-grid{grid-template-columns:1fr}.press-contact{flex-direction:column;text-align:center}}
+</style>

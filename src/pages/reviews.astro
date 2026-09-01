@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Reviews | Vincenzo's Fish & Chips Van">
-<section class="page-hero"><div class="container"><div class="kicker">Vincenzo's</div><h1 class="page-title">Reviews</h1><p class="lead">What customers say about Vincenzo's.</p></div></section>
-<section class="section"><div class="container media-grid"><article class="card placeholder"><h2>Page being rebuilt in Astro</h2><p>This route is active and ready for your real photographs and content.</p></article></div></section>
+<BaseLayout title="Customer Moments | Vincenzo's Fish & Chips Van" description="Real customer moments and community support for Vincenzo's Fish & Chips Van.">
+<section class="page-hero"><div class="container"><div class="kicker">Our customers</div><h1 class="page-title">Big smiles. Long queues.</h1><p class="lead">We will never invent reviews or customer photographs. These are real moments from the road.</p></div></section>
+<section class="section"><div class="container grid-2 moments"><img src="/assets/images/press/van-queue.jpg" alt="A real customer queue at the little black van"><div><div class="kicker">Our promise</div><h2 class="section-title">If you are in the queue, we will serve you.</h2><p class="lead">Thank you to every customer who travels, waits, shares our posts and welcomes the little black van into their community.</p><div class="button-row"><a class="button button-red" href="https://www.facebook.com/VincenzosFishAndChipsVan/" target="_blank" rel="noopener">See customer comments</a></div></div></div></section>
 </BaseLayout>
-<style>
-.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.media-card video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.media-card h2,.placeholder{padding:22px}.placeholder{min-height:260px}@media(max-width:750px){.media-grid{grid-template-columns:1fr}}
-</style>
+<style>.moments{align-items:center}.moments img{width:100%;height:520px;object-fit:cover;border-radius:28px}</style>
