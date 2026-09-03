@@ -1,11 +1,11 @@
 export const schedule=[
-  {name:'Monday',stops:[['Kippen — Village Hall','4:00 PM – 5:30 PM'],['Balfron — Donaldson Park / Swing Park','From 6:30 PM until the last customer in the queue']]},
-  {name:'Tuesday',stops:[['Torbex — Grendon Court','4:00 PM – 5:00 PM'],['Cambusbarron — Bowling Club','From 5:30 PM until the last customer in the queue']]},
-  {name:'Wednesday',stops:[['Thornhill — Back Loan','4:00 PM – 5:30 PM'],['Witches Craig Caravan Park','6:15 PM – 8:00 PM']]},
-  {name:'Thursday',stops:[['Doune','4:00 PM – 5:30 PM'],['Dunblane — Braeport','From 6:00 PM until the last customer in the queue']]},
-  {name:'Friday',stops:[['Cornton — Johnston Avenue','4:00 PM – 6:00 PM'],['Causewayhead','6:45 PM – 8:00 PM']]},
-  {name:'Saturday',stops:[['Events & special visits','Please check our Facebook Page before travelling']]},
-  {name:'Sunday',stops:[['Riverside — Abbey Road','4:00 PM – 6:00 PM'],['Cambusbarron — Bowling Club','6:30 PM – 8:00 PM']]}
+  {name:'Monday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Wednesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Thursday',stops:[['Dunblane — Braeport Community Centre','4:00 PM – 6:00 PM'],['Doune — Moray Park','From 6:30 PM until the last customer in the queue']]},
+  {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
 ];
 
 export const menuSections=[
