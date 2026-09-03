@@ -12,8 +12,8 @@ button,input,textarea,select{font:inherit}.container{width:min(1180px,calc(100% 
 .section-dark .kicker{color:#ff6c71}.section-title,.page-title{margin:0;font-family:Georgia,'Times New Roman',serif;line-height:.98;letter-spacing:-.045em}
 .section-title{max-width:820px;font-size:clamp(2.35rem,6vw,5.2rem)}.page-title{font-size:clamp(3rem,8vw,7rem)}
 .lead{max-width:760px;margin:22px 0 0;color:var(--soft);font-size:clamp(1.05rem,2vw,1.28rem);line-height:1.7}.section-dark .lead{color:#c9c9c9}
-.page-hero{position:relative;padding:170px 0 82px;overflow:hidden;background:linear-gradient(135deg,#080808 0%,#292929 75%,#111 100%);color:#fff}
-.page-hero:after{content:'';position:absolute;width:430px;height:430px;right:-150px;bottom:-260px;border:90px solid rgba(215,25,32,.18);border-radius:50%}
+.page-hero{position:relative;padding:170px 0 82px;overflow:hidden;background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.72) 48%,rgba(0,0,0,.46) 100%),linear-gradient(0deg,rgba(0,0,0,.5),rgba(0,0,0,.08)),url('/assets/images/press/van-queue.jpg') center 52%/cover no-repeat;color:#fff}
+.page-hero:after{content:none}
 .page-hero .container{position:relative;z-index:1}.page-hero .lead{color:#d0d0d0}
 .card{overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:0 14px 35px rgba(25,18,14,.07)}
 .card-dark{border-color:#333;background:#191919;color:#fff}.button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 24px;border:1px solid transparent;border-radius:999px;font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;transition:.2s ease}.button:hover{transform:translateY(-2px)}
