@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Winter Service | Vincenzo's Fish & Chips Van"
+  description="Stay warm and dry with Vincenzo's winter customer-care service: pagers available now and personalised umbrellas coming soon."
+>
+  <section class="winter-hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="kicker">Our winter customer-care service</span>
+        <h1>This winter,<br><em>we've got you covered.</em></h1>
+        <p class="lead">Cold, wind or rain—your visit to the little black van can still be comfortable. Our pager service is available now, so you can wait warm and dry in your car while we freshly cook your order.</p>
+        <div class="actions">
+          <a class="button" href="/schedule">Find the van</a>
+          <a class="button secondary" href="https://www.facebook.com/vincenzosfishandchips" target="_blank" rel="noopener">Latest updates</a>
+        </div>
+      </div>
+      <img class="poster" src="/assets/images/winter-service.webp" alt="Vincenzo's winter service poster showing the little black van, customers with branded umbrellas and the pager service">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="service-grid">
+        <article class="service-card available">
+          <span class="status">Available now</span>
+          <h2>Pager service</h2>
+          <p>Order at the van, take your pager and wait comfortably in your car.</p>
+          <ol>
+            <li><strong>Order</strong> at the little black van.</li>
+            <li><strong>Take your pager</strong> from our team.</li>
+            <li><strong>Wait warm and dry</strong> in your car.</li>
+            <li>When it <strong>beeps, lights or vibrates</strong>, your freshly cooked food is ready.</li>
+          </ol>
+        </article>
+        <article class="service-card soon">
+          <span class="status">Coming soon</span>
+          <h2>Vincenzo's umbrellas</h2>
+          <p>We are preparing personalised Vincenzo's umbrellas for customers to borrow while they wait in the queue to order.</p>
+          <div class="umbrella">☂</div>
+          <p class="small">We will announce the start of this service as soon as the umbrellas arrive.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="container">
+      <p class="kicker">Good food brings happy people</p>
+      <h2>Freshly cooked.<br><em>No waiting in the rain.</em></h2>
+      <p>Looking after our customers means much more than serving great fish and chips.</p>
+      <p class="signature">Vincenzo, Giuliana &amp; the little black van ❤️</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .winter-hero{padding:150px 0 90px;background:radial-gradient(circle at 82% 22%,rgba(201,0,34,.3),transparent 35%),linear-gradient(135deg,#070707 0%,#151515 56%,#050505 100%);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,520px);gap:64px;align-items:center}
+  h1{font-size:clamp(3.2rem,7vw,7.2rem);line-height:.87;text-transform:uppercase;letter-spacing:-.055em;margin:18px 0 30px;color:#fff}
+  h1 em,.closing em{font-style:normal;color:#ef2735}
+  .hero-copy .lead{max-width:720px;color:#ddd}
+  .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .button.secondary{background:transparent;border:1px solid rgba(255,255,255,.3)}
+  .poster{width:100%;border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.58);border:1px solid rgba(255,255,255,.15)}
+  .service-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}
+  .service-card{padding:42px;border-radius:24px;background:#fff;border:1px solid #ececec;box-shadow:0 20px 50px rgba(0,0,0,.08)}
+  .service-card h2{font-size:clamp(2rem,4vw,3.4rem);margin:14px 0}
+  .service-card p{font-size:1.08rem;line-height:1.7;color:#4b4b4b}
+  .status{display:inline-block;padding:8px 13px;border-radius:999px;text-transform:uppercase;font-size:.74rem;font-weight:900;letter-spacing:.1em;background:#111;color:#fff}
+  .available .status{background:#138a43}
+  .soon .status{background:#d3a018;color:#111}
+  ol{margin:26px 0 0;padding:0;list-style:none;counter-reset:steps}
+  li{counter-increment:steps;position:relative;padding:16px 0 16px 58px;border-top:1px solid #eee;line-height:1.5}
+  li::before{content:counter(steps);position:absolute;left:0;top:11px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#c90022;color:#fff;font-weight:900}
+  .umbrella{font-size:8rem;line-height:1;text-align:center;margin:30px 0 12px;filter:drop-shadow(0 12px 16px rgba(0,0,0,.15))}
+  .small{font-size:.92rem!important}
+  .closing{padding:90px 0;background:#0b0b0b;text-align:center;color:#fff}
+  .closing h2{font-size:clamp(2.7rem,6vw,6rem);line-height:.95;text-transform:uppercase;margin:16px 0 24px}
+  .closing p:not(.kicker){max-width:700px;margin:0 auto;color:#d9d9d9;font-size:1.15rem}
+  .signature{padding-top:24px;font-family:cursive;color:#fff!important}
+  @media(max-width:900px){.winter-hero{padding:120px 0 64px}.hero-grid,.service-grid{grid-template-columns:1fr}.poster{max-width:620px;margin:auto}.service-card{padding:30px}.hero-grid{gap:42px}}
+</style>
