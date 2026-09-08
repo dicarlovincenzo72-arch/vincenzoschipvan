@@ -1,6 +1,6 @@
 export const schedule=[
   {name:'Monday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Tuesday',stops:[['Cambusbarron — Bowling Club','4:00 PM – 5:45 PM'],['Cowie — in front of our premises','From 6:30 PM until the last customer in the queue']]},
   {name:'Wednesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Thursday',stops:[['Dunblane — Braeport Community Centre','4:00 PM – 6:00 PM'],['Doune — Moray Park','From 6:30 PM until the last customer in the queue']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
