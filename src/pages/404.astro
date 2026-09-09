@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page Not Found | Vincenzo's Fish & Chips Van" description="The page you were looking for could not be found.">
+  <section class="not-found">
+    <div class="container not-found-inner">
+      <img src="/assets/images/logo-original.png" alt="Vincenzo's Fish & Chips Van logo">
+      <span class="code">404</span>
+      <h1>Looks like the little black van has moved on.</h1>
+      <p>The page you were looking for is not here, but you can still find today’s stops, check our menu or return home.</p>
+      <div class="button-row">
+        <a class="button button-red" href="/schedule">Find the van</a>
+        <a class="button button-light" href="/">Back home</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+.not-found{min-height:100svh;display:grid;align-items:center;padding:135px 0 70px;background:radial-gradient(circle at 75% 20%,rgba(215,25,32,.28),transparent 34%),#0b0b0b;color:#fff;text-align:center}.not-found-inner{display:grid;justify-items:center}.not-found img{width:150px;margin-bottom:24px}.code{color:#ff5d63;font-size:.85rem;font-weight:950;letter-spacing:.22em}.not-found h1{max-width:900px;margin:18px auto 20px;font-family:Georgia,serif;font-size:clamp(3rem,7vw,6.5rem);line-height:.95}.not-found p{max-width:680px;margin:0;color:#c8c8c8;font-size:1.12rem;line-height:1.7}.not-found .button-row{justify-content:center}.not-found .button-light{background:transparent;border-color:rgba(255,255,255,.7);color:#fff}
+</style>
