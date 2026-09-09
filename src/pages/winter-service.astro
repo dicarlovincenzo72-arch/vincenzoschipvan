@@ -13,7 +13,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p class="lead">Cold, wind or rain—your visit to the little black van can still be comfortable. Our pager service is available now, so you can wait warm and dry in your car while we freshly cook your order.</p>
         <div class="actions">
           <a class="button" href="/schedule">Find the van</a>
-          <a class="button secondary" href="https://www.facebook.com/vincenzosfishandchips" target="_blank" rel="noopener">Latest updates</a>
+          <a class="button secondary" href="https://www.facebook.com/vincenzosfishandchips" target="_blank" rel="noopener">Facebook</a>
         </div>
       </div>
       <img class="poster" src="/assets/images/winter-service.webp" alt="Vincenzo's winter service poster showing the little black van, customers with branded umbrellas and the pager service">
@@ -62,7 +62,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   h1 em,.closing em{font-style:normal;color:#ef2735}
   .hero-copy .lead{max-width:720px;color:#ddd}
   .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
-  .button.secondary{background:transparent;border:1px solid rgba(255,255,255,.3)}
+  .actions .button{display:inline-flex;align-items:center;justify-content:center;min-width:148px;padding:14px 24px;border-radius:999px;background:#c90022!important;color:#fff!important;border:2px solid #c90022!important;font-weight:900;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;opacity:1!important;visibility:visible!important;box-shadow:0 8px 24px rgba(201,0,34,.28);transition:transform .2s ease,box-shadow .2s ease}
+  .actions .button:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,0,34,.38)}
+  .actions .button.secondary{background:#1877f2!important;border-color:#1877f2!important;color:#fff!important;box-shadow:0 8px 24px rgba(24,119,242,.28)}
+  .actions .button.secondary:hover{box-shadow:0 12px 30px rgba(24,119,242,.38)}
   .poster{width:100%;border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.58);border:1px solid rgba(255,255,255,.15)}
   .service-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}
   .service-card{padding:42px;border-radius:24px;background:#fff;border:1px solid #ececec;box-shadow:0 20px 50px rgba(0,0,0,.08)}
