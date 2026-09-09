@@ -3,6 +3,31 @@ const path=Astro.url.pathname;
 const links=[['/','Home'],['/schedule','Find Us'],['/winter-service','Winter Service'],['/menu','Menu'],['/events','Events'],['/gallery','Gallery'],['/awards','Awards'],['/story','Our Story'],['/press','Press'],['/contact','Contact']];
 const isActive=(href)=>href==='/'?path==='/':path.startsWith(href);
 ---
-<header id="siteHeader" class="header"><div class="bar"><a class="brand" href="/" aria-label="Vincenzo's Fish & Chips Van home"><img src="/assets/images/logo-original.png" alt="Vincenzo's Fish & Chips Van original logo"></a><button id="menuButton" class="menu" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button><nav id="nav" aria-label="Main navigation">{links.map(([href,label])=><a class:list={{active:isActive(href)}} href={href}>{label}</a>)}<a class="book" href="/events">Book the Van</a></nav></div></header>
-<script is:inline>const h=document.getElementById('siteHeader'),b=document.getElementById('menuButton'),n=document.getElementById('nav');b?.addEventListener('click',()=>{const open=n?.classList.toggle('open');b.setAttribute('aria-expanded',String(Boolean(open)));document.body.classList.toggle('menu-open',Boolean(open));});n?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b?.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open');}));const s=()=>h?.classList.toggle('scrolled',scrollY>24);s();addEventListener('scroll',s,{passive:true});</script>
-<style>.header{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent;transition:.25s}.header.scrolled{background:rgba(10,10,10,.96);border-color:rgba(255,255,255,.11);backdrop-filter:blur(15px)}.bar{width:min(1380px,calc(100% - 48px));min-height:86px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{width:134px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.42));transition:.25s;flex:0 0 auto}.header.scrolled .brand{width:112px}.brand img{width:100%}nav{display:flex;align-items:center;gap:12px}nav a{color:#fff;font-size:.55rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}nav a:hover,nav a.active{color:#ff5b61}nav .book{padding:12px 16px;border-radius:999px;background:var(--red);color:#fff;box-shadow:0 10px 25px rgba(201,0,34,.24)}.menu{display:none;width:44px;height:44px;border:0;border-radius:50%;background:var(--red)}.menu span{display:block;width:19px;height:2px;margin:4px auto;background:#fff}@media(max-width:1120px){.bar{width:min(100% - 34px,1380px)}.brand{width:122px}nav{gap:8px}nav a{font-size:.49rem}}@media(max-width:920px){.bar{min-height:76px;width:min(100% - 28px,1380px)}.brand,.header.scrolled .brand{width:108px}.menu{display:block}nav{display:none;position:absolute;top:76px;left:14px;right:14px;max-height:calc(100vh - 90px);overflow:auto;padding:18px;flex-direction:column;align-items:stretch;background:rgba(12,12,12,.99);border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 20px 55px rgba(0,0,0,.35)}nav.open{display:flex}nav a{padding:10px 8px;font-size:.75rem}nav .book{text-align:center}}</style>
+<header id="siteHeader" class="header">
+  <div class="bar">
+    <a class="brand" href="/" aria-label="Vincenzo's Fish & Chips Van home"><img src="/assets/images/logo-original.png" alt="Vincenzo's Fish & Chips Van original logo"></a>
+    <button id="menuButton" class="menu" aria-label="Open menu" aria-controls="nav" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main navigation">{links.map(([href,label])=><a class:list={{active:isActive(href)}} href={href}>{label}</a>)}<a class="book" href="/events">Book the Van</a></nav>
+  </div>
+</header>
+<script is:inline>
+const h=document.getElementById('siteHeader'),b=document.getElementById('menuButton'),n=document.getElementById('nav');
+const closeMenu=()=>{n?.classList.remove('open');b?.setAttribute('aria-expanded','false');b?.setAttribute('aria-label','Open menu');document.body.classList.remove('menu-open')};
+b?.addEventListener('click',()=>{const open=n?.classList.toggle('open');b.setAttribute('aria-expanded',String(Boolean(open)));b.setAttribute('aria-label',open?'Close menu':'Open menu');document.body.classList.toggle('menu-open',Boolean(open));});
+n?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+const s=()=>h?.classList.toggle('scrolled',scrollY>24);s();addEventListener('scroll',s,{passive:true});
+addEventListener('resize',()=>{if(innerWidth>1080)closeMenu()});
+</script>
+<style>
+.header{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent;transition:.25s}
+.header.scrolled{background:rgba(10,10,10,.97);border-color:rgba(255,255,255,.13);backdrop-filter:blur(15px)}
+.bar{width:min(1420px,calc(100% - 42px));min-height:92px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{width:140px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.42));transition:.25s;flex:0 0 auto}.header.scrolled .brand{width:122px}.brand img{width:100%}
+nav{display:flex;align-items:center;justify-content:flex-end;gap:17px}
+nav a{color:#fff;font-size:.72rem;font-weight:900;letter-spacing:.055em;text-transform:uppercase;white-space:nowrap;line-height:1.2;text-shadow:0 1px 4px rgba(0,0,0,.75)}
+nav a:hover,nav a.active{color:#ff656b}
+nav .book{padding:13px 18px;border-radius:999px;background:var(--red);color:#fff;box-shadow:0 10px 25px rgba(201,0,34,.3);font-size:.7rem}
+.menu{display:none;width:46px;height:46px;border:0;border-radius:50%;background:var(--red);cursor:pointer}.menu span{display:block;width:20px;height:2px;margin:4px auto;background:#fff}
+@media(max-width:1280px){.bar{width:min(100% - 30px,1420px)}nav{gap:12px}nav a{font-size:.66rem;letter-spacing:.04em}nav .book{font-size:.65rem;padding:12px 15px}.brand{width:126px}.header.scrolled .brand{width:112px}}
+@media(max-width:1080px){.bar{min-height:78px;width:min(100% - 28px,1420px)}.brand,.header.scrolled .brand{width:110px}.menu{display:block}nav{display:none;position:absolute;top:78px;left:14px;right:14px;max-height:calc(100vh - 92px);overflow:auto;padding:20px;flex-direction:column;align-items:stretch;gap:3px;background:rgba(12,12,12,.99);border:1px solid rgba(255,255,255,.14);border-radius:18px;box-shadow:0 20px 55px rgba(0,0,0,.42)}nav.open{display:flex}nav a{padding:12px 10px;font-size:.88rem;letter-spacing:.055em}nav .book{text-align:center;margin-top:5px;padding:14px 16px;font-size:.82rem}}
+</style>
