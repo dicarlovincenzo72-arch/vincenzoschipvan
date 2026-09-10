@@ -5,7 +5,7 @@ export const schedule=[
   {name:'Thursday',stops:[['Parklands Care Home — 60 Alloa Park Drive, Alloa, FK10 1QY','12:00 PM – 1:30 PM'],['Braeport Centre — Braeport, Dunblane, Perthshire, FK15 0AT','4:00 PM – 6:00 PM'],['Riverside — Abbey Road','From 6:45 PM until the last customer in the queue']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
+  {name:'Sunday',stops:[['Bowhill Highland Games — Wallsgreen Park, Bowhill, Fife','12:00 PM – 5:00 PM']]}
 ];
 
 export const menuSections=[
