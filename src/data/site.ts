@@ -1,8 +1,8 @@
 export const schedule=[
   {name:'Monday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Wednesday',stops:[['Thornhill — Back Loan','4:00 PM – 5:30 PM'],['Killearn — Kids Hub, 31B Main Street, G63 9RJ','From 6:30 PM until the last customer in the queue']]},
-  {name:'Thursday',stops:[['Dunblane — Braeport Community Centre','4:00 PM – 6:00 PM'],['Doune — Moray Park','From 6:30 PM until the last customer in the queue']]},
+  {name:'Wednesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Thursday',stops:[['Parklands Care Home — 60 Alloa Park Drive, Alloa, FK10 1QY','12:00 PM – 1:30 PM'],['Braeport Centre — Braeport, Dunblane, Perthshire, FK15 0AT','4:00 PM – 6:00 PM'],['Riverside — Abbey Road','From 6:45 PM until the last customer in the queue']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
