@@ -1,5 +1,7 @@
 name = "vincenzoschipvan"
+main = "worker.js"
 compatibility_date = "2026-07-17"
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
