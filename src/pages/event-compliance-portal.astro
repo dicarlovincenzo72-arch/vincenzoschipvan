@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Event Compliance Portal | Vincenzo's Fish & Chips Van®" description="Secure access for event organisers, venues and local authorities to Vincenzo's Fish & Chips Van compliance documents.">
+  <section class="portal-hero">
+    <div class="container portal-wrap">
+      <div class="portal-intro">
+        <div class="kicker">Secure document access</div>
+        <h1>Event Compliance Portal</h1>
+        <p>For event organisers, venues and local authorities. Enter the private access code supplied by Vincenzo’s Fish & Chips Van® to access our current compliance documents.</p>
+        <div class="trust-row"><span>🔒 Protected access</span><span>📄 Current documents</span><span>🚐 Vincenzo’s Fish & Chips Van®</span></div>
+      </div>
+      <div class="login-card" aria-labelledby="portal-login-title">
+        <div class="lock">🔐</div>
+        <h2 id="portal-login-title">Document access</h2>
+        <p>Enter the access code supplied by Vincenzo’s.</p>
+        <form method="post" action="/event-compliance-portal/login">
+          <label for="access-code">Access code</label>
+          <input id="access-code" name="code" type="text" inputmode="text" required placeholder="Enter access code">
+          <button class="button button-red" type="submit">Access documents</button>
+        </form>
+        <small>Access is intended only for authorised event organisers, venues and relevant authorities.</small>
+      </div>
+    </div>
+  </section>
+  <section class="section portal-info"><div class="container"><div class="kicker">Available after sign-in</div><h2 class="section-title">Everything an organiser normally asks us for, in one place.</h2><div class="doc-grid"><article><b>Insurance</b><span>Public liability and related cover</span></article><article><b>Licences & Registration</b><span>Trading and food business documentation</span></article><article><b>Gas & Electrical</b><span>Gas safety, electrical and PAT records</span></article><article><b>Food Safety</b><span>Training, hygiene and allergen documentation</span></article><article><b>Risk & Fire Safety</b><span>Risk assessments and fire safety records</span></article><article><b>Other Certificates</b><span>Additional event-specific compliance documents</span></article></div></div></section>
+</BaseLayout>
+<style>
+.portal-hero{padding:190px 0 95px;background:linear-gradient(135deg,#111 0%,#292929 55%,#111 100%);color:#fff}.portal-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,7vw,95px);align-items:center}.portal-intro h1{max-width:850px;margin:8px 0 20px;font-family:Georgia,serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:400;line-height:.94}.portal-intro>p{max-width:720px;color:#ddd;font-size:1.15rem;line-height:1.75}.trust-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.trust-row span{padding:9px 12px;border:1px solid #ffffff2c;border-radius:999px;background:#ffffff0d;font-size:.72rem;font-weight:900;letter-spacing:.04em}.login-card{padding:36px;border:1px solid #ffffff24;border-radius:26px;background:#fff;color:#111;box-shadow:0 25px 70px #0006}.lock{font-size:2rem}.login-card h2{margin:10px 0 6px;font-family:Georgia,serif;font-size:2.3rem;font-weight:400}.login-card>p{margin-top:0;color:#666}.login-card form{display:grid;gap:12px;margin-top:24px}.login-card label{font-size:.74rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.login-card input{width:100%;min-height:54px;padding:0 16px;border:1px solid #ccc;border-radius:10px;background:#fff;color:#111;font:inherit}.login-card button{width:100%;border:0;cursor:pointer}.login-card small{display:block;margin-top:18px;color:#777;line-height:1.55}.portal-info{background:#f7f2e9}.portal-info .section-title{max-width:900px}.doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}.doc-grid article{padding:28px;border:1px solid #ded5c8;border-radius:18px;background:#fff}.doc-grid b,.doc-grid span{display:block}.doc-grid b{font-family:Georgia,serif;font-size:1.35rem}.doc-grid span{margin-top:7px;color:#6b6b6b;line-height:1.5}@media(max-width:850px){.portal-hero{padding-top:140px}.portal-wrap{grid-template-columns:1fr}.doc-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.portal-hero{padding:125px 0 60px}.login-card{padding:25px}.doc-grid{grid-template-columns:1fr}}
+</style>
