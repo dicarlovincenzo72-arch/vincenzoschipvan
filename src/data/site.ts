@@ -3,8 +3,8 @@ export const schedule=[
   {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Wednesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Friday',stops:[['Cornton — Johnston Avenue','4:00 PM – 5:45 PM'],['Cowie — outside our premises, Vincenzo’s Fish & Chips Van','From 6:30 PM until the last customer in the queue']]},
-  {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Saturday',stops:[['SPECIAL EVENT — Northcare Residences — 20 Lower Bridge Street, Stirling, FK8 1AA','12:00 PM – 1:30 PM'],['Deanston — Teith Road','4:00 PM – 5:15 PM'],['Callander — Keltie Bridge Caravan Park','From 5:45 PM until the last customer in the queue']]},
   {name:'Sunday',stops:[['Bowhill Highland Games — Wallsgreen Park, Bowhill, Fife','12:00 PM – 5:00 PM']]}
 ];
 
