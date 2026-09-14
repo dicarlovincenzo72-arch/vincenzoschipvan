@@ -5,7 +5,7 @@ export const schedule=[
   {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Sunday',stops:[['Bowhill Highland Games — Wallsgreen Park, Bowhill, Fife','12:00 PM – 5:00 PM']]}
+  {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
 ];
 
 export const menuSections=[
