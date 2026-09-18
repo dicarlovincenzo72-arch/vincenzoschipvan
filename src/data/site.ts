@@ -1,7 +1,7 @@
 export const schedule=[
   {name:'Monday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Wednesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Wednesday',stops:[['City Plumbing – The Bathroom Showroom, Almond Road, Falkirk, FK2 9HQ — 7 October','11:00 AM – 2:00 PM']]},
   {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
