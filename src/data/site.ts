@@ -3,7 +3,7 @@ export const schedule=[
   {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Wednesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Friday',stops:[['Cornton — Johnston Avenue','4:00 PM – 5:45 PM'],['Cowie — Outside our base, 11 Main Street','From 6:30 PM until the last customer in the queue']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
 ];
