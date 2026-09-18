@@ -5,7 +5,7 @@ export const schedule=[
   {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Sunday',stops:[['The Dunblane Centre — Funday Sunday','11:00 AM – 3:00 PM']]}
+  {name:'Sunday',stops:[['The Dunblane Centre — Funday Sunday — 27 September','11:00 AM – 3:00 PM']]}
 ];
 
 export const menuSections=[
