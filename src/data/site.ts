@@ -4,7 +4,7 @@ export const schedule=[
   {name:'Wednesday',stops:[['City Plumbing – The Bathroom Showroom, Almond Road, Falkirk, FK2 9HQ — 7 October','11:00 AM – 2:00 PM']]},
   {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Saturday',stops:[['Buchlyvie — Station Road — 19 September','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park — 19 September','From 6:30 PM until the last customer in the queue']]},
   {name:'Sunday',stops:[['The Dunblane Centre — Funday Sunday — 27 September','11:00 AM – 3:00 PM']]}
 ];
 
