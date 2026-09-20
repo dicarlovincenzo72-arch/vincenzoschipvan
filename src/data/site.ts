@@ -5,7 +5,7 @@ export const schedule=[
   {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Saturday',stops:[['Buchlyvie — Station Road — 19 September','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park — 19 September','From 6:30 PM until the last customer in the queue']]},
-  {name:'Sunday',stops:[['The Dunblane Centre — Funday Sunday — 27 September','11:00 AM – 3:00 PM']]}
+  {name:'Sunday',stops:[['Kippen Village Hall — Indoor Car Boot-Style Sale — 20 September','11:00 AM – 2:00 PM'],['Drymen — Lomond Mountain Rescue Team Car Park, Old Gartmore Road, G63 0DY — 20 September','From 5:00 PM until the last customer in the queue']]}
 ];
 
 export const menuSections=[
