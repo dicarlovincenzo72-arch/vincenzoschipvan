@@ -2,8 +2,8 @@ export const schedule=[
   {name:'Monday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Wednesday',stops:[['City Plumbing – The Bathroom Showroom, Almond Road, Falkirk, FK2 9HQ — 7 October','11:00 AM – 2:00 PM']]},
-  {name:'Thursday',stops:[['Dunblane — Braeport Centre — 24 September','4:00 PM – 6:00 PM'],['Cornton — Johnston Avenue — 24 September','From 6:30 PM until the last customer in the queue']]},
-  {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Friday',stops:[['Henry Dunlop Memorial Rally — Strathallan Castle Estate, Auchterarder — 25 September','4:00 PM – 7:30 PM']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
 ];
