@@ -2,10 +2,10 @@ export const schedule=[
   {name:'Monday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Wednesday',stops:[['City Plumbing – The Bathroom Showroom, Almond Road, Falkirk, FK2 9HQ — 7 October','11:00 AM – 2:00 PM']]},
-  {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Thursday',stops:[['Dunblane — Braeport Centre — 24 September','4:00 PM – 6:00 PM'],['Cornton — Johnston Avenue — 24 September','From 6:30 PM until the last customer in the queue']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Saturday',stops:[['Buchlyvie — Station Road — 19 September','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park — 19 September','From 6:30 PM until the last customer in the queue']]},
-  {name:'Sunday',stops:[['Kippen Village Hall — Indoor Car Boot-Style Sale — 20 September','11:00 AM – 2:00 PM'],['Drymen — Lomond Mountain Rescue Team Car Park, Old Gartmore Road, G63 0DY — 20 September','From 5:00 PM until the last customer in the queue']]}
+  {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
 ];
 
 export const menuSections=[
