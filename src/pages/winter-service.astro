@@ -38,7 +38,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li><strong>Wait warm and dry</strong> in your car.</li>
             <li>When it <strong>beeps, lights or vibrates</strong>, your freshly cooked food is ready.</li>
           </ol>
-          <img class="pager-photo" src="/assets/images/vincenzos-pagers-original.jpeg" alt="The pager set used by Vincenzo’s to call customers when their freshly cooked order is ready" loading="lazy">
+          <div class="pager-photo" role="img" aria-label="The pager set used by Vincenzo’s to call customers when their freshly cooked order is ready"></div>
         </article>
         <article class="service-card available umbrella-card">
           <span class="status">Available now</span>
@@ -79,16 +79,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .gallery-note span{font-size:.76rem;font-weight:900;letter-spacing:.15em;color:#ffdc42}.gallery-note strong{font-size:clamp(1.3rem,2.2vw,2rem);line-height:1.05}
   .umbrella-card-photo{display:block;width:100%;max-height:300px;object-fit:cover;object-position:center;border-radius:16px;margin-top:16px}
   .pairing-intro{text-align:center;max-width:820px;margin:0 auto 44px}.pairing-intro .kicker{color:#bb0022}.pairing-intro h2{font-size:clamp(2.5rem,5vw,4.5rem);line-height:1;text-transform:uppercase;margin:12px 0 18px}.pairing-intro p{font-size:1.2rem;line-height:1.6;color:#424242}
-  .pager-photo{display:block;width:min(100%,300px);aspect-ratio:1;object-fit:cover;object-position:center 65%;margin:24px auto 0;border-radius:16px}
-  .service-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}
-  .service-card{padding:42px;border-radius:24px;background:#fff;border:1px solid #ececec;box-shadow:0 20px 50px rgba(0,0,0,.08)}
+  .pager-photo{display:block;width:min(100%,300px);aspect-ratio:5/7;margin:24px auto 0;border-radius:16px;background:#fff url('/assets/images/vincenzos-pagers-original.jpeg') center 63% / 150% auto no-repeat}
+  .service-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:28px}
+  .service-card{min-width:0;padding:42px;border-radius:24px;background:#fff;border:1px solid #ececec;box-shadow:0 20px 50px rgba(0,0,0,.08)}
   .service-card h2{font-size:clamp(2rem,4vw,3.4rem);margin:14px 0}
   .service-card p{font-size:1.08rem;line-height:1.7;color:#4b4b4b}
   .status{display:inline-block;padding:8px 13px;border-radius:999px;text-transform:uppercase;font-size:.74rem;font-weight:900;letter-spacing:.1em;background:#111;color:#fff}
   .available .status{background:#138a43}
   
   ol{margin:26px 0 0;padding:0;list-style:none;counter-reset:steps}
-  li{counter-increment:steps;position:relative;padding:16px 0 16px 58px;border-top:1px solid #eee;line-height:1.5}
+  li{counter-increment:steps;position:relative;padding:16px 0 16px 58px;border-top:1px solid #eee;line-height:1.5;overflow-wrap:break-word}
   li::before{content:counter(steps);position:absolute;left:0;top:11px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#c90022;color:#fff;font-weight:900}
   
   .small{font-size:.92rem!important}
@@ -96,5 +96,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .closing h2{font-size:clamp(2.7rem,6vw,6rem);line-height:.95;text-transform:uppercase;margin:16px 0 24px}
   .closing p:not(.kicker){max-width:700px;margin:0 auto;color:#d9d9d9;font-size:1.15rem}
   .signature{padding-top:24px;font-family:cursive;color:#fff!important}
-  @media(max-width:900px){.winter-hero{padding:120px 0 64px}.hero-grid,.service-grid{grid-template-columns:1fr}.umbrella-gallery{width:100%;max-width:620px;margin:auto}.service-card{padding:30px}.hero-grid{gap:42px}} @media(max-width:520px){.umbrella-gallery{min-height:430px}.umbrella-main{height:430px}.umbrella-detail{bottom:76px;width:34%;height:38%}.gallery-note{padding:18px}}
+  @media(max-width:900px){.winter-hero{padding:120px 0 64px}.hero-grid,.service-grid{grid-template-columns:minmax(0,1fr)}.umbrella-gallery{width:100%;max-width:620px;margin:auto}.service-card{padding:30px}.hero-grid{gap:42px}} @media(max-width:520px){.umbrella-gallery{min-height:430px}.umbrella-main{height:430px}.umbrella-detail{bottom:76px;width:34%;height:38%}.gallery-note{padding:18px}.service-card{padding:22px}li{padding-left:50px}li::before{width:36px;height:36px}}
 </style>
