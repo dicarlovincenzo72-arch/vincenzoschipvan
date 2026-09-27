@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Winter Service | Vincenzo's Fish & Chips Van"
-  description="Stay warm and dry with Vincenzo's winter customer-care service: pagers and branded umbrellas are now available."
+  description="The winning winter combination: Vincenzo’s pagers and branded umbrellas help you wait in comfort while we cook your Fish & Chips fresh."
 >
   <section class="winter-hero">
     <div class="container hero-grid">
@@ -26,6 +26,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <section class="section">
     <div class="container">
+      <div class="pairing-intro"><span class="kicker">Ready for Scottish weather</span><h2>The winning winter combination</h2><p>Wait in your car with one of our pagers, or borrow a Vincenzo’s umbrella while you wait outside. We’ll cook your Fish &amp; Chips fresh either way.</p></div>
       <div class="service-grid">
         <article class="service-card available">
           <span class="status">Available now</span>
@@ -37,6 +38,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li><strong>Wait warm and dry</strong> in your car.</li>
             <li>When it <strong>beeps, lights or vibrates</strong>, your freshly cooked food is ready.</li>
           </ol>
+          <img class="pager-photo" src="/assets/images/vincenzos-pagers-original.jpeg" alt="The pager set used by Vincenzo’s to call customers when their freshly cooked order is ready" loading="lazy">
         </article>
         <article class="service-card available umbrella-card">
           <span class="status">Available now</span>
@@ -76,6 +78,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .gallery-note{position:absolute;left:0;right:0;bottom:0;display:grid;gap:3px;padding:22px 24px;background:linear-gradient(transparent,rgba(0,0,0,.92) 30%);color:#fff;text-transform:uppercase}
   .gallery-note span{font-size:.76rem;font-weight:900;letter-spacing:.15em;color:#ffdc42}.gallery-note strong{font-size:clamp(1.3rem,2.2vw,2rem);line-height:1.05}
   .umbrella-card-photo{display:block;width:100%;max-height:300px;object-fit:cover;object-position:center;border-radius:16px;margin-top:16px}
+  .pairing-intro{text-align:center;max-width:820px;margin:0 auto 44px}.pairing-intro .kicker{color:#bb0022}.pairing-intro h2{font-size:clamp(2.5rem,5vw,4.5rem);line-height:1;text-transform:uppercase;margin:12px 0 18px}.pairing-intro p{font-size:1.2rem;line-height:1.6;color:#424242}
+  .pager-photo{display:block;width:min(100%,300px);aspect-ratio:1;object-fit:cover;object-position:center 65%;margin:24px auto 0;border-radius:16px}
   .service-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}
   .service-card{padding:42px;border-radius:24px;background:#fff;border:1px solid #ececec;box-shadow:0 20px 50px rgba(0,0,0,.08)}
   .service-card h2{font-size:clamp(2rem,4vw,3.4rem);margin:14px 0}
