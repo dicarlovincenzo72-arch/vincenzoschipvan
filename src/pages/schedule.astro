@@ -11,7 +11,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 const liveCard=document.getElementById('vanLive'),liveTitle=document.getElementById('vanLiveTitle'),liveTime=document.getElementById('vanLiveTime'),offline=document.getElementById('vanOffline'),map=document.getElementById('vanMap'),mapLink=document.getElementById('vanMapLink'),expand=document.getElementById('vanExpand'),close=document.getElementById('vanClose');
 let vanMap,vanMarker;
-const vanIcon=L.icon({iconUrl:'/assets/images/van-map-marker.webp',iconSize:[110,49],iconAnchor:[55,47],popupAnchor:[0,-45]});
+const vanIcon=L.icon({iconUrl:'/assets/images/van-map-marker.webp?v=2',iconSize:[110,49],iconAnchor:[55,47],popupAnchor:[0,-45]});
 function closeLargeMap(){liveCard.classList.remove('expanded');document.body.style.overflow='';close.hidden=true;expand.hidden=map.hidden;expand.setAttribute('aria-expanded','false');requestAnimationFrame(()=>vanMap?.invalidateSize())}
 expand.addEventListener('click',()=>{liveCard.classList.add('expanded');document.body.style.overflow='hidden';expand.hidden=true;expand.setAttribute('aria-expanded','true');close.hidden=false;requestAnimationFrame(()=>vanMap?.invalidateSize());close.focus()});
 close.addEventListener('click',()=>{closeLargeMap();expand.focus()});
