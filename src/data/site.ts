@@ -1,8 +1,8 @@
 export const schedule=[
   {name:'Monday 28 September',stops:[['Kippen Village Hall','4:00 PM – 5:30 PM'],['Balfron — Donaldson Park / Swing Park','From 6:30 PM until the last customer in the queue']]},
-  {name:'Tuesday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
-  {name:'Wednesday',stops:[['City Plumbing – The Bathroom Showroom, Almond Road, Falkirk, FK2 9HQ — 7 October','11:00 AM – 2:00 PM']]},
-  {name:'Thursday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
+  {name:'Tuesday 29 September',stops:[['Cambusbarron Bowling Club','4:00 PM – 5:45 PM'],['Vincenzo’s Base — 11 Main Street, Cowie','From 6:30 PM until the last customer in the queue']]},
+  {name:'Wednesday 30 September',stops:[['Thornhill','4:00 PM – 5:30 PM'],['Dunblane — after Thornhill, this week only instead of Thursday','Please check our Facebook Page for the exact time'],['City Plumbing – The Bathroom Showroom, Almond Road, Falkirk, FK2 9HQ — 7 October','11:00 AM – 2:00 PM']]},
+  {name:'Thursday 1 October',stops:[['Van off the road — frying range upgrade','No service on Thursday 1 October']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
