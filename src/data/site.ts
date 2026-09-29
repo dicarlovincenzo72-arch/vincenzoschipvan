@@ -1,7 +1,7 @@
 export const schedule=[
   {name:'Monday 28 September',stops:[['Kippen Village Hall','4:00 PM – 5:30 PM'],['Balfron — Donaldson Park / Swing Park','From 6:30 PM until the last customer in the queue']]},
   {name:'Tuesday 29 September',stops:[['Cambusbarron Bowling Club','4:00 PM – 5:45 PM'],['Vincenzo’s Base — 11 Main Street, Cowie','From 6:30 PM until the last customer in the queue']]},
-  {name:'Wednesday 30 September',stops:[['Thornhill','4:00 PM – 5:30 PM'],['Dunblane — after Thornhill, this week only instead of Thursday','Please check our Facebook Page for the exact time']]},
+  {name:'Wednesday 30 September',stops:[['Fairview Care Home — 9 Cowie Road, Bannockburn, Stirling FK7 8JW','12:00 PM – 2:00 PM — residents, staff and visitors'],['Thornhill — Back Loan','4:00 PM – 5:30 PM'],['Dunblane Development Trust — this week only instead of Thursday','Arriving approximately 6:15–6:30 PM, until the last customer in the queue']]},
   {name:'Thursday 1 October',stops:[['Van off the road — frying range upgrade','No service on Thursday 1 October']]},
   {name:'Friday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
   {name:'Saturday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]},
