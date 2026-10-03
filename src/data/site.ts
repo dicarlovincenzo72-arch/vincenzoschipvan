@@ -5,7 +5,7 @@ export const schedule=[
   {name:'Thursday 1 October',stops:[['Van off the road — frying range upgrade','No service on Thursday 1 October']]},
   {name:'Friday 2 October',stops:[['Roselea Court Care Home — Randolph Road, Stirling FK8 2AP','12:00 PM – 1:30 PM'],['Cornton — Johnston Avenue','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park','Arriving approximately 6:15–6:30 PM, until the last customer in the queue — everyone welcome']]},
   {name:'Saturday 3 October 2026',stops:[['Blackford Inn — pub car park, Blackford','From 5:00 PM throughout the evening — hired by Blackford Inn to serve delicious, freshly cooked Fish & Chips for their customers']]},
-  {name:'Sunday',stops:[['Locations announced day by day','Please check our Facebook Page for the latest poster']]}
+  {name:'Sunday 4 October 2026',stops:[['Drymen — Lomond Mountain Rescue Team (LMRT), Old Gartmore Road, Drymen G63 0DJ','From 5:00 PM until the last customer in the queue — Vincenzo’s branded umbrellas available while you wait']]}
 ];
 
 export const menuSections=[
@@ -44,3 +44,4 @@ export const awards=[
 ];
 
 export const eventTypes=['Highland Games & Gala Days','Community & Fun Days','Corporate Events','Weddings & Celebrations','Birthday Parties','Charity Fundraisers & Club Events','Care Homes & Private Events','Festivals & Shows'];
+
