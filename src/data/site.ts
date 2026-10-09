@@ -4,7 +4,7 @@ export const schedule=[
   {name:'Wednesday 30 September',stops:[['Fairview Care Home — 9 Cowie Road, Bannockburn, Stirling FK7 8JW','12:00 PM – 2:00 PM — residents, staff and visitors'],['Thornhill — Back Loan','4:00 PM – 5:30 PM'],['Dunblane Development Trust — this week only instead of Thursday','Arriving approximately 6:15–6:30 PM, until the last customer in the queue']]},
   {name:'Thursday 1 October',stops:[['Van off the road — frying range upgrade','No service on Thursday 1 October']]},
   {name:'Friday 9 October 2026',stops:[['Cornton — Johnston Avenue','4:00 PM – 5:30 PM'],['Doune — Moray Park','From 6:15 PM until the last customer in the queue']]},
-  {name:'Saturday 3 October 2026',stops:[['Blackford Inn — pub car park, Blackford','From 5:00 PM throughout the evening — hired by Blackford Inn to serve delicious, freshly cooked Fish & Chips for their customers']]},
+  {name:'Saturday 10 October 2026',stops:[['Buchlyvie — Station Road','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park','Arriving approximately 6:15–6:30 PM until the last customer in the queue — everyone welcome, not just park residents']]},
   {name:'Sunday 4 October 2026',stops:[['Drymen — Lomond Mountain Rescue Team (LMRT), Old Gartmore Road, Drymen G63 0DJ','From 5:00 PM until the last customer in the queue — Vincenzo’s branded umbrellas available while you wait']]}
 ];
 
