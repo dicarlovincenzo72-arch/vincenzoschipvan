@@ -5,7 +5,7 @@ export const schedule=[
   {name:'Thursday 1 October',stops:[['Van off the road — frying range upgrade','No service on Thursday 1 October']]},
   {name:'Friday 9 October 2026',stops:[['Cornton — Johnston Avenue','4:00 PM – 5:30 PM'],['Doune — Moray Park','From 6:15 PM until the last customer in the queue']]},
   {name:'Saturday 10 October 2026',stops:[['Buchlyvie — Station Road','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park','Arriving approximately 6:15–6:30 PM until the last customer in the queue — everyone welcome, not just park residents']]},
-  {name:'Sunday 4 October 2026',stops:[['Drymen — Lomond Mountain Rescue Team (LMRT), Old Gartmore Road, Drymen G63 0DJ','From 5:00 PM until the last customer in the queue — Vincenzo’s branded umbrellas available while you wait']]}
+  {name:'Sunday 11 October 2026',stops:[['Killearn — Killearn Kids Hub','4:00 PM – 5:30 PM'],['Strathblane — Strathblane Primary School','From 6:15 PM until the last customer in the queue']]}
 ];
 
 export const menuSections=[
