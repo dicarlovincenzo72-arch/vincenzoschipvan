@@ -1,11 +1,11 @@
 export const schedule=[
-  {name:'Monday 28 September',stops:[['Kippen Village Hall','4:00 PM – 5:30 PM'],['Balfron — Donaldson Park / Swing Park','From 6:30 PM until the last customer in the queue']]},
-  {name:'Tuesday 29 September',stops:[['Cambusbarron Bowling Club','4:00 PM – 5:45 PM'],['Vincenzo’s Base — 11 Main Street, Cowie','From 6:30 PM until the last customer in the queue']]},
-  {name:'Wednesday 30 September',stops:[['Fairview Care Home — 9 Cowie Road, Bannockburn, Stirling FK7 8JW','12:00 PM – 2:00 PM — residents, staff and visitors'],['Thornhill — Back Loan','4:00 PM – 5:30 PM'],['Dunblane Development Trust — this week only instead of Thursday','Arriving approximately 6:15–6:30 PM, until the last customer in the queue']]},
-  {name:'Thursday 1 October',stops:[['Van off the road — frying range upgrade','No service on Thursday 1 October']]},
-  {name:'Friday 9 October 2026',stops:[['Cornton — Johnston Avenue','4:00 PM – 5:30 PM'],['Doune — Moray Park','From 6:15 PM until the last customer in the queue']]},
-  {name:'Saturday 10 October 2026',stops:[['Buchlyvie — Station Road','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park','Arriving approximately 6:15–6:30 PM until the last customer in the queue — everyone welcome, not just park residents']]},
-  {name:'Sunday 11 October 2026',stops:[['Killearn — Killearn Kids Hub','4:00 PM – 5:30 PM'],['Strathblane — Strathblane Primary School','From 6:15 PM until the last customer in the queue']]}
+  {name:'Monday 12 October 2026',stops:[['Kippen — Village Hall','4:00 PM – 5:30 PM'],['Fintry — The Fintry Inn car park','From 6:15 PM until the last customer in the queue']]},
+  {name:'Tuesday 13 October 2026',stops:[['The little black van is taking a day off','Back on the road on Wednesday 14 October']]},
+  {name:'Wednesday 14 October 2026',stops:[['Thornhill — Back Loan','4:00 PM – 5:30 PM'],['Cowie — Outside our base, 11 Main Street','From 6:15 PM until the last customer in the queue']]},
+  {name:'Thursday 15 October 2026',stops:[['Dunblane — Development Trust car park','4:00 PM – 6:00 PM'],['Deanston — Teith Road','From 6:45 PM until the last customer in the queue']]},
+  {name:'Friday 16 October 2026',stops:[['Cornton — Johnston Avenue','4:00 PM – 5:30 PM'],['Cowie — Outside our base, 11 Main Street','From 6:15 PM until the last customer in the queue']]},
+  {name:'Saturday 17 October 2026',stops:[['Riverside — Abbey Road','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park','From 6:15 PM until the last customer in the queue']]},
+  {name:'Sunday 18 October 2026',stops:[['Drymen — Lomond Mountain Rescue Team base','From 5:00 PM until the last customer in the queue']]}
 ];
 
 export const menuSections=[
