@@ -1,5 +1,5 @@
 :root{
-  --ink:#151515;--charcoal:#292929;--soft:#686868;--red:#d71920;--red-dark:#a80d13;
+  --ink:#151515;--charcoal:#292929;--soft:#686868;--red:#d71920;--red-dark:#a80d13;--red-on-dark:#ff6268;
   --cream:#f6f1e8;--gold:#d9ad55;--white:#fff;--line:#ddd5ca;
   --shadow:0 24px 70px rgba(25,18,14,.12);--radius:26px
 }
@@ -10,7 +10,7 @@ button,input,textarea,select{font:inherit}.container{width:min(1180px,calc(100% 
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #ffd400;outline-offset:3px}
 .section{padding:92px 0}.section-tight{padding:58px 0}.section-dark{background:#111;color:#fff}.section-cream{background:var(--cream)}
 .kicker{margin-bottom:12px;color:var(--red);font-size:.72rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
-.section-dark .kicker{color:#ff6c71}.section-title,.page-title{margin:0;font-family:Georgia,'Times New Roman',serif;line-height:.98;letter-spacing:-.045em}
+.section-dark .kicker{color:var(--red-on-dark)}.section-title,.page-title{margin:0;font-family:Georgia,'Times New Roman',serif;line-height:.98;letter-spacing:-.045em}
 .section-title{max-width:1050px;margin-inline:auto;font-size:clamp(2rem,3.6vw,3.5rem);line-height:1.12;text-align:center;text-wrap:balance}.page-title{font-size:clamp(3rem,8vw,7rem)}
 .lead{max-width:760px;margin:22px 0 0;color:var(--soft);font-size:clamp(1.05rem,2vw,1.28rem);line-height:1.7}.section-dark .lead{color:#c9c9c9}
 .page-hero{position:relative;display:flex;align-items:center;min-height:620px;padding:180px 0 80px;overflow:hidden;background:#151515;color:#fff}
@@ -42,3 +42,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .section .kicker,.section-tight .kicker{text-align:center}
 .section .lead{text-align:center;margin-inline:auto}
 .section .button-row,.section-tight .button-row{justify-content:center}
+
+/* Use the brighter brand accent for small text on dark backgrounds. */
+.page-hero .kicker,.portal-hero .kicker,.winter-hero .kicker,.closing .kicker{color:var(--red-on-dark)}
