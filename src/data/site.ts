@@ -1,5 +1,6 @@
 export const schedule=[
   {
+    "date": "2026-10-26",
     "name": "Monday 26 October 2026",
     "stops": [
       [
@@ -13,6 +14,7 @@ export const schedule=[
     ]
   },
   {
+    "date": "2026-10-27",
     "name": "Tuesday 27 October 2026",
     "stops": [
       [
@@ -26,6 +28,7 @@ export const schedule=[
     ]
   },
   {
+    "date": "2026-10-28",
     "name": "Wednesday 28 October 2026",
     "stops": [
       [
@@ -39,6 +42,7 @@ export const schedule=[
     ]
   },
   {
+    "date": "2026-10-29",
     "name": "Thursday 29 October 2026",
     "stops": [
       [
@@ -52,6 +56,7 @@ export const schedule=[
     ]
   },
   {
+    "date": "2026-10-30",
     "name": "Friday 30 October 2026",
     "stops": [
       [
@@ -61,6 +66,7 @@ export const schedule=[
     ]
   },
   {
+    "date": "2026-10-31",
     "name": "Saturday 31 October 2026",
     "stops": [
       [
@@ -74,6 +80,7 @@ export const schedule=[
     ]
   },
   {
+    "date": "2026-11-01",
     "name": "Sunday 1 November 2026",
     "stops": [
       [
@@ -125,4 +132,5 @@ export const awards=[
 ];
 
 export const eventTypes=['Highland Games & Gala Days','Community & Fun Days','Corporate Events','Weddings & Celebrations','Birthday Parties','Charity Fundraisers & Club Events','Care Homes & Private Events','Festivals & Shows'];
+
 

@@ -1,0 +1,21 @@
+---
+import {schedule} from '../data/site';
+import {stopMapUrl} from '../utils/schedule';
+---
+<section class="upcoming" aria-labelledby="upcomingTitle">
+  <div class="container">
+    <div class="upcoming-head"><div><div class="kicker">Find the little black van</div><h2 id="upcomingTitle">Next planned stops</h2></div><a href="/schedule#weekly-schedule">Full weekly schedule →</a></div>
+    <p id="upcomingPending">See the dated weekly schedule and check Facebook before travelling.</p>
+    {schedule.map((day,i)=><div data-upcoming-day={i} hidden><h3>{day.name}</h3><div class="upcoming-grid">{day.stops.map(stop=><article><h4>{stop[0]}</h4><p>{stop[1]}</p><a href={stopMapUrl(stop[0])} target="_blank" rel="noopener">Find this stop on Google Maps ↗</a></article>)}</div></div>)}
+    <p class="upcoming-note">Plans can change. <a href="https://www.facebook.com/VincenzosFishAndChipsVan/" target="_blank" rel="noopener">Check our latest Facebook update before travelling ↗</a></p>
+  </div>
+</section>
+<script>
+import {schedule} from '../data/site';
+import {scheduleState} from '../utils/schedule';
+const refresh=()=>{const {index,isToday}=scheduleState(schedule);document.querySelectorAll<HTMLElement>('[data-upcoming-day]').forEach((panel,i)=>panel.hidden=i!==index);const title=document.getElementById('upcomingTitle'),pending=document.getElementById('upcomingPending');if(title)title.textContent=index<0?'New dates coming soon':isToday?'Today’s planned stops':'Next planned stops';if(pending){pending.hidden=index>=0;pending.textContent=index<0?'The published programme has ended. Please check Facebook for our next confirmed dates.':'See the dated weekly schedule.'}};
+refresh();setInterval(refresh,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
+</script>
+<style>
+.upcoming{padding:38px 0;background:var(--cream);border-bottom:1px solid var(--line)}.upcoming-head{display:flex;justify-content:space-between;align-items:center;gap:24px}.upcoming-head h2{font-family:Georgia,serif;font-size:clamp(1.9rem,3vw,2.8rem);line-height:1.1;margin:0}.upcoming-head>a{font-weight:800;border-bottom:1px solid}.upcoming h3{font-size:1rem;margin:24px 0 14px}.upcoming-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.upcoming article{background:#fff;padding:22px;border:1px solid var(--line);border-radius:16px}.upcoming h4{font-size:1.1rem;margin:0 0 8px}.upcoming article p{color:var(--red);font-weight:800;margin:0 0 14px}.upcoming article a{font-size:.85rem;text-decoration:underline;text-underline-offset:4px}.upcoming-note{font-size:.85rem;color:#555;margin:20px 0 0}.upcoming-note a{text-decoration:underline}.upcoming [hidden]{display:none}@media(max-width:650px){.upcoming-head{align-items:flex-start;flex-direction:column;gap:12px}.upcoming-grid{grid-template-columns:1fr}}
+</style>
