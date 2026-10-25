@@ -91,7 +91,7 @@ export const schedule=[
 
 export const menuSections=[
   {name:'Chip Shop',columns:['Single','Supper'],items:[
-    ['Regular Fish (1)','£6.50','£10.00'],['Regular Special Fish (1)','£7.00','£10.50'],
+    ['Regular Fish (1)','£6.50','£10.00'],['Regular Special Fish (1)','£7.00','£11.00'],
     ['Sausage (2)','£4.00','£7.50'],['Smoked Sausage','£4.00','£7.50'],
     ['Hamburger (2)','£4.50','£8.00'],['Steak Pie','£4.00','£7.50'],['King Rib','£4.00','£7.50'],
     ['Haggis Pudding','£4.00','£7.50'],['White Pudding','£4.00','£7.50'],['Black Pudding','£4.00','£7.50'],
