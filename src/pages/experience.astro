@@ -5,4 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="page-hero"><div class="container"><div class="kicker">Real events</div><h1 class="page-title">Our Experience</h1><p class="lead">The little black van at Doune Gala Day, seen from both sides of the crowd.</p></div></section>
 <section class="section"><div class="container media-grid"><article class="card"><video controls muted playsinline preload="metadata" src="/assets/videos/doune-gala-main.mp4" poster="/assets/images/press/van-queue.jpg"></video><h2>Doune Gala Day — View One</h2></article><article class="card"><video controls muted playsinline preload="metadata" src="/assets/videos/doune-gala-second.mp4" poster="/assets/images/press/van-launch.jpg"></video><h2>Doune Gala Day — View Two</h2></article></div></section>
 </BaseLayout>
-<style>.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.media-grid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.media-grid h2{padding:22px;margin:0;font-family:Georgia,serif}@media(max-width:750px){.media-grid{grid-template-columns:1fr}}</style>
+<style>.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.media-grid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.media-grid h2{padding:22px;margin:0;font-family:Georgia,serif}@media(max-width:750px){.media-grid{grid-template-columns:1fr}}
+/* Consistent centred section headings and information cards. */
+.media-grid h2{text-align:center;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.2;text-wrap:balance}
+</style>

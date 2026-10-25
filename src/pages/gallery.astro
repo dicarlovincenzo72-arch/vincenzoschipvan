@@ -15,4 +15,7 @@ const photos=[
 <section class="section section-cream"><div class="container"><div class="photo-grid">{photos.map(([src,alt])=><figure><img src={src} alt={alt} loading="lazy"><figcaption>{alt}</figcaption></figure>)}</div></div></section>
 </BaseLayout>
 <style>.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:42px}.video-grid article{overflow:hidden;border-radius:22px;background:#111;color:#fff}.video-grid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.video-grid h3{margin:0;padding:20px}.photo-grid{columns:3 280px;column-gap:16px}.photo-grid figure{break-inside:avoid;margin:0 0 16px;overflow:hidden;border-radius:19px;background:#111;color:#fff}.photo-grid img{width:100%}.photo-grid figcaption{padding:14px;font-size:.8rem}@media(max-width:750px){.video-grid{grid-template-columns:1fr}}
+
+/* Consistent centred section headings and information cards. */
+.video-grid h3,.photo-grid figcaption{text-align:center;text-wrap:balance}
 </style>
