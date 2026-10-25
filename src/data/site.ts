@@ -1,12 +1,93 @@
 export const schedule=[
-  {name:'Monday 12 October 2026',stops:[['Kippen — Village Hall','4:00 PM – 5:30 PM'],['Fintry — The Fintry Inn car park','From 6:15 PM until the last customer in the queue']]},
-  {name:'Tuesday 13 October 2026',stops:[['The little black van is taking a day off','Back on the road on Wednesday 14 October']]},
-  {name:'Wednesday 14 October 2026',stops:[['Thornhill — Back Loan','4:00 PM – 5:30 PM'],['Cowie — Outside our base, 11 Main Street','From 6:15 PM until the last customer in the queue']]},
-  {name:'Thursday 15 October 2026',stops:[['Dunblane — Development Trust car park','4:00 PM – 6:00 PM'],['Deanston — Teith Road','From 6:45 PM until the last customer in the queue']]},
-  {name:'Friday 16 October 2026',stops:[['Cornton — Johnston Avenue','4:00 PM – 5:30 PM'],['Cowie — Outside our base, 11 Main Street','From 6:15 PM until the last customer in the queue']]},
-  {name:'Saturday 17 October 2026',stops:[['Riverside — Abbey Road','4:00 PM – 5:30 PM'],['Callander — Keltie Bridge Caravan Park','From 6:15 PM until the last customer in the queue']]},
-  {name:'Sunday 18 October 2026',stops:[['Drymen — Lomond Mountain Rescue Team base','From 5:00 PM until the last customer in the queue']]}
+  {
+    "name": "Monday 26 October 2026",
+    "stops": [
+      [
+        "Kippen — Village Hall",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Buchlyvie — Station Road",
+        "From 6:15 PM until the last customer in the queue"
+      ]
+    ]
+  },
+  {
+    "name": "Tuesday 27 October 2026",
+    "stops": [
+      [
+        "Cambusbarron — Bowling Club",
+        "4:00 PM – 5:45 PM"
+      ],
+      [
+        "Cowie — Outside our base, 11 Main Street",
+        "From 6:30 PM until the last customer in the queue"
+      ]
+    ]
+  },
+  {
+    "name": "Wednesday 28 October 2026",
+    "stops": [
+      [
+        "Thornhill — Back Loan",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Killearn — Kids Hub",
+        "From 6:30 PM until the last customer in the queue"
+      ]
+    ]
+  },
+  {
+    "name": "Thursday 29 October 2026",
+    "stops": [
+      [
+        "Dunblane — Braeport Centre",
+        "4:00 PM – 6:00 PM"
+      ],
+      [
+        "Riverside — Abbey Road",
+        "From 6:30 PM until the last customer in the queue"
+      ]
+    ]
+  },
+  {
+    "name": "Friday 30 October 2026",
+    "stops": [
+      [
+        "Bannockburn Rugby Club — Bonfire Night",
+        "From 4:00 PM — serving throughout the evening"
+      ]
+    ]
+  },
+  {
+    "name": "Saturday 31 October 2026",
+    "stops": [
+      [
+        "Cornton — Johnston Avenue",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Cowie — Outside our base, 11 Main Street",
+        "From 6:30 PM until the last customer in the queue"
+      ]
+    ]
+  },
+  {
+    "name": "Sunday 1 November 2026",
+    "stops": [
+      [
+        "Thornhill — Village Hall · Dunblane United FC Craft Fair",
+        "12:00 PM – 3:00 PM"
+      ],
+      [
+        "Drymen — Lomond Mountain Rescue",
+        "From 5:00 PM until the last customer in the queue"
+      ]
+    ]
+  }
 ];
+
 
 export const menuSections=[
   {name:'Chip Shop',columns:['Single','Supper'],items:[
