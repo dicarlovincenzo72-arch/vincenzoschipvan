@@ -113,8 +113,8 @@ export const menuSections=[
   ]},
   {name:'Chips & Sides',columns:['Price'],items:[
     ['Regular Chips','£3.50'],['Large Chips','£4.50'],['Chips & Cheese','£5.00'],
-    ['Chips & Curry Sauce','£5.00'],['Chips Cheese Curry','£6.00'],['Chips & Gravy','£6.00'],
-    ['Chips Cheese Gravy','£5.00'],['Chips & Peas','£5.00'],['Chip Roll','£4.00']
+    ['Chips & Curry Sauce','£5.00'],['Chips Cheese Curry','£6.00'],['Chips & Gravy','£5.00'],
+    ['Chips Cheese Gravy','£6.00'],['Chips & Peas','£5.00'],['Chip Roll','£4.00']
   ]},
   {name:'Extra Additions',columns:['Price'],items:[
     ['Add Cheese, Curry or Gravy to Supper','£2.00'],['8oz Tub — Curry, Gravy, Mushy Peas or Cheese','£2.50']
