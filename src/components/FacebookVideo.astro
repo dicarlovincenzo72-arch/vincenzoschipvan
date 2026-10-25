@@ -1,0 +1,28 @@
+---
+const {video}=Astro.props;
+---
+<article class="facebook-video" data-facebook-video>
+  <button class="video-preview" type="button" aria-label={`Play video: ${video.title}`} aria-haspopup="dialog" aria-controls={`film-${video.name}`}>
+    <img src={video.poster} alt="" loading="lazy" decoding="async" />
+    <span class="play-icon" aria-hidden="true">▶</span><span class="play-label">Play video</span>
+  </button>
+  <div class="video-caption"><span>{video.category}</span><h3>{video.title}</h3><a href={video.url} target="_blank" rel="noopener">Watch on Facebook ↗</a></div>
+  <dialog id={`film-${video.name}`} aria-labelledby={`film-title-${video.name}`}>
+    <div class="film-top"><h2 id={`film-title-${video.name}`}>{video.title}</h2><button class="close-film" type="button" aria-label="Close video">Close ×</button></div>
+    <div class="film-frame" data-embed={video.embed} data-title={video.title} style={`--film-ratio:${video.ratio}`}></div>
+    <p>Video from our Facebook page. <a href={video.url} target="_blank" rel="noopener">Open on Facebook ↗</a></p>
+  </dialog>
+</article>
+<script>
+document.querySelectorAll<HTMLElement>('[data-facebook-video]').forEach(card=>{
+  const opener=card.querySelector<HTMLButtonElement>('.video-preview'),dialog=card.querySelector<HTMLDialogElement>('dialog'),frame=card.querySelector<HTMLElement>('.film-frame'),closer=card.querySelector<HTMLButtonElement>('.close-film');
+  if(!opener||!dialog||!frame||!closer)return;
+  opener.addEventListener('click',()=>{const iframe=document.createElement('iframe');iframe.src=frame.dataset.embed!;iframe.title=frame.dataset.title!;iframe.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';frame.replaceChildren(iframe);dialog.showModal()});
+  closer.addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('close',()=>{frame.replaceChildren();opener.focus()});
+  dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
+});
+</script>
+<style>
+.facebook-video{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff;color:#151515;text-align:center}.video-preview{position:relative;display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;background:#111;cursor:pointer;overflow:hidden}.video-preview img{width:100%;height:100%;object-fit:contain;opacity:.85}.play-icon{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:68px;height:68px;border-radius:50%;background:var(--red);color:#fff;font-size:1.5rem;box-shadow:0 8px 26px #0007}.play-label{position:absolute;left:0;right:0;bottom:12px;color:#fff;font-size:.8rem;font-weight:800;text-shadow:0 2px 5px #000}.video-caption{padding:22px}.video-caption>span{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--red)}.video-caption h3{margin:12px 0 18px;font-family:Georgia,serif;font-size:1.5rem;line-height:1.2;text-wrap:balance}.video-caption>a{font-size:.85rem;text-decoration:underline;text-underline-offset:4px}dialog{width:min(960px,calc(100% - 24px));max-height:95dvh;padding:20px;border:1px solid #555;border-radius:20px;background:#111;color:#fff;overflow:auto}dialog::backdrop{background:#000c}.film-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:20px}.film-top h2{font-size:1rem;margin:0;text-align:left;font-weight:700}.close-film{flex-shrink:0;min-height:44px;padding:8px 14px;border:1px solid #777;border-radius:999px;background:#222;color:#fff;cursor:pointer}.film-frame{position:relative;width:min(100%,calc(70dvh * var(--film-ratio)));aspect-ratio:var(--film-ratio);margin:auto;background:#000}.film-frame :global(iframe){position:absolute;inset:0;width:100%;height:100%;border:0}dialog>p{margin:16px 0 0;font-size:.8rem;color:#ccc}dialog>p a{text-decoration:underline}
+</style>

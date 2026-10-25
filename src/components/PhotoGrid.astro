@@ -1,0 +1,9 @@
+---
+const {photos, columns=2}=Astro.props;
+---
+<div class="curated-photos" style={`--photo-columns:${columns}`}>
+  {photos.map(photo=><figure><a class="full-photo" href={photo.src} target="_blank" rel="noopener" aria-label={`View full photo: ${photo.caption}`}><img src={photo.src} alt={photo.caption} width={photo.width} height={photo.height} loading="lazy" decoding="async" /></a><figcaption><strong>{photo.caption}</strong><small>Photo: {photo.credit}</small><a href={photo.source} target="_blank" rel="noopener">Original Facebook photo ↗</a></figcaption></figure>)}
+</div>
+<style>
+.curated-photos{columns:var(--photo-columns) 270px;column-gap:20px;margin-top:38px}.curated-photos figure{break-inside:avoid;margin:0 0 20px;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff;color:#151515}.full-photo{display:block}.curated-photos img{display:block;width:100%;height:auto}.curated-photos figcaption{display:grid;gap:9px;padding:20px;text-align:center}.curated-photos strong{font-size:1.04rem;text-wrap:balance;line-height:1.5}.curated-photos small{color:#686868;font-size:.75rem}.curated-photos figcaption a{font-size:.8rem;text-decoration:underline;text-underline-offset:4px}@media(max-width:600px){.curated-photos{columns:1}}
+</style>

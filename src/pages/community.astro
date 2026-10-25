@@ -1,11 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import FacebookVideo from '../components/FacebookVideo.astro';
+import {communityPhotos,communityVideos} from '../data/community-media';
+const carePhotos=communityPhotos.filter(p=>['fairview-welcome','roselea-smiles','roselea-team'].includes(p.name));
+const films=communityVideos.filter(v=>['care-home-smiles','grendon-court'].includes(v.name));
 ---
 <BaseLayout title="Community | Vincenzo's Fish & Chips Van" description="Vincenzo's Fish & Chips Van at community days, charity events, care homes and villages across Central Scotland.">
 <section class="page-hero"><div class="container"><div class="kicker">Supporting the places that support us</div><h1 class="page-title">Community</h1><p class="lead">Village stops, care homes, charity fundraisers, gala days and local organisations are at the heart of what we do.</p></div></section>
-<section class="section"><div class="container grid-2 community"><div><div class="kicker">More than a food van</div><h2 class="section-title">Proud to be part of the day.</h2><p class="lead">We love being invited into communities across Central Scotland — whether the crowd is large, the celebration is private or the visit brings a special treat to care-home residents.</p><div class="button-row"><a class="button button-red" href="/events">Invite the van</a></div></div><img src="/assets/images/press/van-queue.jpg" alt="Vincenzo's little black van serving the community"></div></section>
+<section class="section"><div class="container grid-2 community"><div><div class="kicker">More than a food van</div><h2 class="section-title">Proud to be part of the day.</h2><p class="lead">We love being invited into communities across Central Scotland — whether the crowd is large, the celebration is private or the visit brings a special treat to care-home residents.</p><div class="button-row"><a class="button button-red" href="/events">Invite the van</a></div></div><img src="/assets/images/community/bowhill-queue.jpg" alt="A busy community welcome at Bowhill Highland Games" loading="lazy"></div></section>
+<section class="section section-cream"><div class="container"><div class="kicker">Fairview & Roselea Court</div><h2 class="section-title">Our speciality? Bringing smiles to care homes.</h2><p class="lead">Freshly cooked fish suppers, friendly conversations and time together. Thank you to the residents, visitors and staff who make every visit special.</p><PhotoGrid photos={carePhotos} columns={3}/></div></section>
+<section class="section"><div class="container"><div class="kicker">Moments from our Facebook page</div><h2 class="section-title">The welcomes we never forget.</h2><div class="community-films">{films.map(video=><FacebookVideo video={video}/>)}</div><div class="button-row"><a class="button button-red" href="/gallery">More photos & videos</a><a class="button button-dark" href="/events">Arrange a visit</a></div></div></section>
 </BaseLayout>
 <style>.community{align-items:center}.community img{width:100%;height:520px;object-fit:cover;border-radius:28px}
 /* Consistent centred section headings and information cards. */
 .community>div{text-align:center}.community .lead{margin-inline:auto}.community .button-row{justify-content:center}
+.community-films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:38px}@media(max-width:750px){.community-films{grid-template-columns:1fr}}
 </style>

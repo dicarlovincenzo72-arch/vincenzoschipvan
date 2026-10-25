@@ -1,21 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const photos=[
-  ['/assets/images/press/van-launch.jpg','The real little black van at launch'],
-  ['/assets/images/press/van-queue.jpg','A real queue at a Vincenzo’s event'],
-  ['/assets/images/award-group-1.jpg','Vincenzo receiving an award'],
-  ['/assets/images/award-stage.jpg','Award ceremony stage'],
-  ['/assets/images/double-award.jpg','The two Central Scotland awards'],
-  ['/assets/images/award-group-2.jpg','A proud awards-night group photograph']
-];
+import PhotoGrid from '../components/PhotoGrid.astro';
+import FacebookVideo from '../components/FacebookVideo.astro';
+import {communityPhotos,communityVideos} from '../data/community-media';
+const eventPhotos=communityPhotos.filter(p=>p.category==='Highland Games & events');
+const carePhotos=communityPhotos.filter(p=>p.category==='Care homes'&&p.name!=='vincenzo-giuliana-roselea');
+const familyPhotos=communityPhotos.filter(p=>p.category==='Family business'||p.name==='vincenzo-giuliana-roselea');
+const earlyPhotos=[['/assets/images/press/van-launch.jpg','The little black van at launch'],['/assets/images/press/van-queue.jpg','A warm welcome at an event']];
+const awardPhotos=[['/assets/images/award-group-1.jpg','Vincenzo receiving an award'],['/assets/images/award-stage.jpg','Award ceremony stage'],['/assets/images/double-award.jpg','The two Central Scotland awards'],['/assets/images/award-group-2.jpg','A proud awards-night group photograph']];
 ---
-<BaseLayout title="Gallery | Vincenzo's Fish & Chips Van" description="Real photographs and videos from Vincenzo's Fish & Chips Van, our events and award-winning journey.">
-<section class="page-hero"><div class="container"><div class="kicker">100% real</div><h1 class="page-title">Gallery</h1><p class="lead">No stock photography and no invented crowds — only our van, our work and the people who have shared the journey.</p></div></section>
-<section class="section"><div class="container"><div class="kicker">On the road</div><h2 class="section-title">The little black van in action.</h2><div class="video-grid"><article><video controls muted playsinline preload="metadata" poster="/assets/images/press/van-queue.jpg" src="/assets/videos/doune-gala-main.mp4"></video><h3>Doune Gala Day — the crowd</h3></article><article><video controls muted playsinline preload="metadata" poster="/assets/images/press/van-launch.jpg" src="/assets/videos/doune-gala-second.mp4"></video><h3>Doune Gala Day — the van</h3></article></div></div></section>
-<section class="section section-cream"><div class="container"><div class="photo-grid">{photos.map(([src,alt])=><figure><img src={src} alt={alt} loading="lazy"><figcaption>{alt}</figcaption></figure>)}</div></div></section>
+<BaseLayout title="Gallery | Vincenzo's Fish & Chips Van" description="Real photographs and videos from Bowhill Highland Games, Fairview and Roselea Court care-home visits, Grendon Court, Cowie, Buchlyvie and Doune Gala Day.">
+<section class="page-hero"><div class="container"><div class="kicker">Our people. Our places. Our little black van.</div><h1 class="page-title">Gallery</h1><p class="lead">From busy Highland Games to care-home lunches and familiar village faces — real moments shared along the way.</p></div></section>
+<nav class="gallery-jumps container" aria-label="Gallery categories"><a href="#event-photos">Events</a><a href="#care-home-photos">Care homes</a><a href="#family-photos">Our family</a><a href="#facebook-films">Videos</a><a href="#award-photos">Awards</a></nav>
+<section class="section" id="event-photos"><div class="container"><div class="kicker">Highland Games & events</div><h2 class="section-title">Bowhill, you were amazing.</h2><p class="lead gallery-intro">A busy day at Bowhill Highland Games: 238 people served, familiar smiles and a wonderful welcome.</p><PhotoGrid photos={eventPhotos}/><div class="legacy-grid">{earlyPhotos.map(([src,alt])=><figure><img src={src} alt={alt} loading="lazy"/><figcaption>{alt}</figcaption></figure>)}</div></div></section>
+<section class="section section-cream" id="care-home-photos"><div class="container"><div class="kicker">Care homes</div><h2 class="section-title">Freshly cooked food. Time together. Big smiles.</h2><p class="lead gallery-intro">Thank you to the residents, visitors and teams at Fairview Carehome and Roselea Court for making us so welcome.</p><PhotoGrid photos={carePhotos}/></div></section>
+<section class="section" id="family-photos"><div class="container"><div class="kicker">A family business</div><h2 class="section-title">Vincenzo, Giuliana & a little helping hand.</h2><PhotoGrid photos={familyPhotos}/></div></section>
+<section class="section section-cream" id="facebook-films"><div class="container"><div class="kicker">From our Facebook page</div><h2 class="section-title">Watch the little black van in action.</h2><p class="lead gallery-intro">Care-home visits, community welcomes and busy village evenings. Choose a video to open the Facebook player.</p><div class="facebook-films">{communityVideos.map(video=><FacebookVideo video={video}/>)}</div></div></section>
+<section class="section"><div class="container"><div class="kicker">Doune Gala Day</div><h2 class="section-title">A day to remember.</h2><div class="native-videos"><article><video controls playsinline preload="none" poster="/assets/images/press/van-queue.jpg" src="/assets/videos/doune-gala-main.mp4"></video><h3>Doune Gala Day — the crowd</h3></article><article><video controls playsinline preload="none" poster="/assets/images/press/van-launch.jpg" src="/assets/videos/doune-gala-second.mp4"></video><h3>Doune Gala Day — the van</h3></article></div></div></section>
+<section class="section section-cream" id="award-photos"><div class="container"><div class="kicker">Proud moments</div><h2 class="section-title">The awards along the way.</h2><div class="legacy-grid">{awardPhotos.map(([src,alt])=><figure><img src={src} alt={alt} loading="lazy"/><figcaption>{alt}</figcaption></figure>)}</div></div></section>
 </BaseLayout>
-<style>.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:42px}.video-grid article{overflow:hidden;border-radius:22px;background:#111;color:#fff}.video-grid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.video-grid h3{margin:0;padding:20px}.photo-grid{columns:3 280px;column-gap:16px}.photo-grid figure{break-inside:avoid;margin:0 0 16px;overflow:hidden;border-radius:19px;background:#111;color:#fff}.photo-grid img{width:100%}.photo-grid figcaption{padding:14px;font-size:.8rem}@media(max-width:750px){.video-grid{grid-template-columns:1fr}}
-
-/* Consistent centred section headings and information cards. */
-.video-grid h3,.photo-grid figcaption{text-align:center;text-wrap:balance}
+<style>
+.gallery-jumps{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding-top:28px}.gallery-jumps a{padding:10px 18px;border:1px solid var(--line);border-radius:999px;font-weight:800;font-size:.9rem}.gallery-intro{max-width:820px;text-align:center;margin-inline:auto}.section[id]{scroll-margin-top:105px}.legacy-grid,.native-videos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:30px}.legacy-grid figure{margin:0;overflow:hidden;border-radius:20px;background:#111;color:#fff}.legacy-grid img{width:100%;height:auto}.legacy-grid figcaption{padding:18px;text-align:center;font-size:.9rem}.facebook-films{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:38px}.native-videos article{overflow:hidden;border-radius:20px;background:#111;color:#fff}.native-videos video{width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}.native-videos h3{margin:0;padding:20px;text-align:center;font-size:1.1rem}@media(max-width:850px){.facebook-films{grid-template-columns:1fr}.facebook-films{max-width:620px;margin-inline:auto}}@media(max-width:650px){.legacy-grid,.native-videos{grid-template-columns:1fr}}
 </style>
