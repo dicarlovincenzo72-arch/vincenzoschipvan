@@ -106,7 +106,7 @@ export const menuSections=[
   ]},
   {name:'Extra Dishes',columns:['Single','Supper'],items:[
     ['Nuggets (10)','£5.00','£8.50'],['Chicken Goujons (6)','£5.00','£8.50'],['Onion Rings (10)','£4.00','£7.50'],
-    ['Potato Fritters (5)','£3.50','—'],['Fritters Roll','£3.50','—']
+    ['Potato Fritters (5)','£4.00','—'],['Fritters Roll','£3.50','—']
   ]},
   {name:'Kids Menu',columns:['Price'],items:[
     ['1/2 Pizza & Chips','£5.00'],['Chicken Nuggets (4) & Chips','£5.00'],
