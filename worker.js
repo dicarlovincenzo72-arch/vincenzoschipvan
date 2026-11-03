@@ -16,14 +16,16 @@ function cookieValue(request,name){
 }
 
 function redirect(location,headers={}){
-  return new Response(null,{status:303,headers:{Location:location,...headers}});
+  return new Response(null,{status:303,headers:{Location:location,'Cache-Control':'no-store',...headers}});
 }
 
 export default {
   async fetch(request,env){
     const url=new URL(request.url);
-    const protectedPath=url.pathname==='/event-compliance-documents' || url.pathname.startsWith('/compliance-docs/');
-    const loginPath=url.pathname==='/event-compliance-portal/login';
+    let path;
+    try{path=decodeURIComponent(url.pathname).replace(/\/+/g,'/').replace(/\/+$/,'').replace(/\.html$/,'')||'/'}catch{return new Response('Invalid URL',{status:400})}
+    const protectedPath=(path==='/event-compliance-documents' || path.startsWith('/event-compliance-documents/')) || path==='/compliance-docs' || path.startsWith('/compliance-docs/');
+    const loginPath=path==='/event-compliance-portal/login';
 
     if(loginPath && request.method==='POST'){
       const form=await request.formData();
@@ -46,6 +48,12 @@ export default {
       if(actual!==expected)return redirect('/event-compliance-portal');
     }
 
-    return env.ASSETS.fetch(request);
+    const response=await env.ASSETS.fetch(request);
+    if(!protectedPath)return response;
+    const privateResponse=new Response(response.body,response);
+    privateResponse.headers.set('Cache-Control','private, no-store');
+    privateResponse.headers.set('X-Robots-Tag','noindex, nofollow');
+    return privateResponse;
   }
 };
+

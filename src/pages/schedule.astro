@@ -8,7 +8,7 @@ const programmeRange=schedule.length?`${dateLabel(schedule[0].date)} – ${dateL
 ---
 <BaseLayout title="Find Us | Vincenzo's Fish & Chips Van" description="See today's locations and serving times for Vincenzo's Fish & Chips Van.">
 <section class="page-hero hero-compact"><div class="container"><div class="kicker">Public stops & serving times</div><h1 class="page-title">Find the little black van.</h1><p class="lead">Choose a dated stop from our weekly programme. Always check our latest Facebook update before travelling.</p></div></section>
-<section class="section live-location-first"><div class="container"><section class="van-live" id="vanLive"><div class="van-live-head"><div><span class="live-dot" aria-hidden="true"></span><strong id="vanLiveTitle">Live van location</strong></div><span id="vanLiveTime">Checking…</span></div><button class="map-close" id="vanClose" type="button" hidden aria-label="Close large map">Close ×</button><div class="van-offline" id="vanOffline"><strong>The little black van is not sharing its location right now.</strong><span>Live tracking is available at any time while GPS updates are being received.</span></div><iframe id="vanMap" title="Live location of Vincenzo's Fish & Chips Van" loading="eager" referrerpolicy="no-referrer-when-downgrade" hidden></iframe><div class="map-actions"><button class="map-expand" id="vanExpand" type="button" hidden aria-expanded="false">View larger live map →</button><a class="map-link" id="vanMapLink" target="_blank" rel="noopener" hidden>Directions in Google Maps ↗</a></div></section></div></section>
+<section class="section live-location-first"><div class="container"><section class="van-live" id="vanLive"><div class="van-live-head"><div><span class="live-dot" aria-hidden="true"></span><strong id="vanLiveTitle">Live van location</strong></div><span id="vanLiveTime" role="status" aria-live="polite">Checking…</span></div><button class="map-close" id="vanClose" type="button" hidden aria-label="Close large map">Close ×</button><div class="van-offline" id="vanOffline"><strong>The little black van is not sharing its location right now.</strong><span>Live tracking is available at any time while GPS updates are being received.</span></div><iframe id="vanMap" title="Live location of Vincenzo's Fish & Chips Van" loading="eager" referrerpolicy="no-referrer-when-downgrade" hidden></iframe><div class="map-actions"><button class="map-expand" id="vanExpand" type="button" hidden aria-expanded="false">View larger live map →</button><a class="map-link" id="vanMapLink" target="_blank" rel="noopener" hidden>Directions in Google Maps ↗</a></div></section></div></section>
 <UpcomingStops />
 <section class="section"><div class="container"><div class="live-alert"><span>Live changes</span><strong>Facebook is the final same-day update.</strong><a href="https://www.facebook.com/VincenzosFishAndChipsVan/" target="_blank" rel="noopener">Check Facebook now →</a></div><div class="schedule-box" id="weekly-schedule"><div class="programme-heading"><span class="kicker">Published programme</span><h2>{programmeRange}</h2><p id="programmeStatus" role="status">Choose a date below.</p></div><div class="day-tabs" id="dayTabs" role="group" aria-label="Choose a service date">{schedule.map((day,i)=><button type="button" data-day={i} aria-pressed={i===0} aria-controls={`service-day-${i}`}><span>{day.name.slice(0,3)}</span><small>{day.date.slice(8)} {day.date.slice(5,7)==='10'?'Oct':'Nov'}</small></button>)}</div>{schedule.map((day,i)=><section class="day-panel" data-panel={i} id={`service-day-${i}`} hidden={i!==0}><div class="day-heading"><span>{String(i+1).padStart(2,'0')}</span><h2>{day.name}</h2></div><div class="stops">{day.stops.map((stop,n)=><article><span class="stop-number">Stop {n+1}</span><h3>{stop[0]}</h3><strong>{stop[1]}</strong><a class="stop-map" href={stopMapUrl(stop[0])} target="_blank" rel="noopener">Find this stop on Google Maps ↗</a></article>)}</div></section>)}</div><div class="notice"><strong>If you are in the queue, we will serve you.</strong>We cook fresh to order and often remain on site until the last customer has been served.</div></div></section>
 <script>
@@ -29,7 +29,7 @@ close.addEventListener('click',()=>{closeLargeMap();expand.focus()});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&liveCard.classList.contains('expanded'))closeLargeMap()});
 async function refreshVanLocation(){
   try{
-    const response=await fetch('https://vincenzos-van-live.dicarlo-vincenzo72.chatgpt.site/api/location',{cache:'no-store'});
+    const response=await fetch('https://vincenzos-van-live.dicarlo-vincenzo72.chatgpt.site/api/location',{cache:'no-store',signal:AbortSignal.timeout(10000)});
     if(!response.ok)throw new Error('Location unavailable');
     const location=await response.json();
     if(!location.live){liveTitle.textContent='Live van location';liveTime.textContent='Not active';offline.hidden=false;map.hidden=true;mapLink.hidden=true;expand.hidden=true;if(liveCard.classList.contains('expanded'))closeLargeMap();return}
@@ -37,7 +37,7 @@ async function refreshVanLocation(){
     if(!Number.isFinite(lat)||!Number.isFinite(lng)||Math.abs(lat)>90||Math.abs(lng)>180)throw new Error('Invalid location');
     const point=lat+','+lng;
     liveTitle.textContent='The little black van is live now';
-    liveTime.textContent='Updated '+new Date(location.updatedAt).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    liveTime.textContent='Updated '+new Date(location.updatedAt).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'});
     offline.hidden=true;
     const src='https://maps.google.com/maps?q='+encodeURIComponent(point)+'&z=15&output=embed';
     if(map.src!==src)map.src=src;
@@ -45,7 +45,7 @@ async function refreshVanLocation(){
     if(!liveCard.classList.contains('expanded'))expand.hidden=false;
     mapLink.href='https://www.google.com/maps?q='+encodeURIComponent(point);
     mapLink.hidden=false;
-  }catch{liveTime.textContent='Temporarily unavailable';offline.hidden=false;map.hidden=true;mapLink.hidden=true}
+  }catch{liveTitle.textContent='Live van location';liveTime.textContent='Temporarily unavailable';offline.hidden=false;map.hidden=true;mapLink.hidden=true;expand.hidden=true;if(liveCard.classList.contains('expanded'))closeLargeMap()}
 }
 refreshVanLocation();setInterval(refreshVanLocation,20000);
 </script>
@@ -58,4 +58,5 @@ refreshVanLocation();setInterval(refreshVanLocation,20000);
 /* Consistent centred section headings and information cards. */
 .day-heading{text-align:center}.day-heading h2{font-size:clamp(1.8rem,3.6vw,3.2rem);line-height:1.15;text-wrap:balance}.stops article{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.stops h3{text-wrap:balance}.stop-map{margin-inline:auto}.notice{text-align:center}.live-alert{text-align:center}
 </style>
+
 
