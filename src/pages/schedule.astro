@@ -39,7 +39,7 @@ async function refreshVanLocation(){
     if(!Number.isFinite(lat)||!Number.isFinite(lng)||Math.abs(lat)>90||Math.abs(lng)>180)throw new Error('Invalid location');
     const point=location.latitude+','+location.longitude;
     liveTitle.textContent='The little black van is live now';
-    liveTime.textContent='Updated '+new Date(location.updatedAt).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    liveTime.textContent=location.updatedAt?'Updated '+new Date(location.updatedAt).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):'GPS connected';
     offline.hidden=true;
     map.hidden=false;
     if(!liveCard.classList.contains('expanded'))expand.hidden=false;
