@@ -1,5 +1,19 @@
 export const schedule=[
   {
+    "date": "2026-11-02",
+    "name": "Monday 2 November 2026",
+    "stops": [
+      [
+        "Kippen — Village Hall",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Balfron — Donaldson Park",
+        "Arriving 6:15 PM – 6:30 PM; serving until the last customer in the queue"
+      ]
+    ]
+  },
+  {
     "date": "2026-11-03",
     "name": "Tuesday 3 November 2026",
     "stops": [
