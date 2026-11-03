@@ -31,7 +31,7 @@ close.addEventListener('click',()=>{closeLargeMap();expand.focus()});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&liveCard.classList.contains('expanded'))closeLargeMap()});
 async function refreshVanLocation(){
   try{
-    const response=await fetch('https://vincenzos-van-live.dicarlo-vincenzo72.chatgpt.site/api/location',{cache:'no-store'});
+    const response=await fetch('/api/location',{cache:'no-store'});
     if(!response.ok)throw new Error('Location unavailable');
     const location=await response.json();
     if(!location.live){liveTitle.textContent='Live van location';liveTime.textContent='Not active';offline.hidden=false;map.hidden=true;mapLink.hidden=true;expand.hidden=true;if(liveCard.classList.contains('expanded'))closeLargeMap();return}
