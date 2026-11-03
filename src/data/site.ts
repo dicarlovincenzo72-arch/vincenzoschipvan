@@ -1,50 +1,40 @@
 export const schedule=[
   {
-    "date": "2026-10-26",
-    "name": "Monday 26 October 2026",
+    "date": "2026-11-03",
+    "name": "Tuesday 3 November 2026",
     "stops": [
       [
-        "Kippen — Village Hall",
-        "4:00 PM – 5:30 PM"
+        "Torbrex, Stirling — Glendevon Court",
+        "4:00 PM – 5:00 PM"
       ],
-      [
-        "Buchlyvie — Station Road",
-        "From 6:15 PM until the last customer in the queue"
-      ]
-    ]
-  },
-  {
-    "date": "2026-10-27",
-    "name": "Tuesday 27 October 2026",
-    "stops": [
       [
         "Cambusbarron — Bowling Club",
-        "4:00 PM – 5:45 PM"
-      ],
-      [
-        "Cowie — Outside our base, 11 Main Street",
-        "From 6:30 PM until the last customer in the queue"
+        "From 5:30 PM until the last customer in the queue"
       ]
     ]
   },
   {
-    "date": "2026-10-28",
-    "name": "Wednesday 28 October 2026",
+    "date": "2026-11-04",
+    "name": "Wednesday 4 November 2026",
     "stops": [
       [
         "Thornhill — Back Loan",
         "4:00 PM – 5:30 PM"
       ],
       [
-        "Killearn — Kids Hub",
-        "From 6:30 PM until the last customer in the queue"
+        "Strathblane — Primary School",
+        "Arriving 6:15 PM – 6:30 PM; serving until the last customer in the queue"
       ]
     ]
   },
   {
-    "date": "2026-10-29",
-    "name": "Thursday 29 October 2026",
+    "date": "2026-11-05",
+    "name": "Thursday 5 November 2026",
     "stops": [
+      [
+        "Falkirk — Willow Lodge Nursery Care Home",
+        "12:00 PM – 1:30 PM"
+      ],
       [
         "Dunblane — Braeport Centre",
         "4:00 PM – 6:00 PM"
@@ -56,45 +46,40 @@ export const schedule=[
     ]
   },
   {
-    "date": "2026-10-30",
-    "name": "Friday 30 October 2026",
-    "stops": [
-      [
-        "Bannockburn Rugby Club — Bonfire Night",
-        "From 4:00 PM — serving throughout the evening"
-      ]
-    ]
-  },
-  {
-    "date": "2026-10-31",
-    "name": "Saturday 31 October 2026",
+    "date": "2026-11-06",
+    "name": "Friday 6 November 2026",
     "stops": [
       [
         "Cornton — Johnston Avenue",
         "4:00 PM – 5:30 PM"
       ],
       [
-        "Cowie — Outside our base, 11 Main Street",
+        "Buchlyvie — Station Road",
         "From 6:30 PM until the last customer in the queue"
       ]
     ]
   },
   {
-    "date": "2026-11-01",
-    "name": "Sunday 1 November 2026",
+    "date": "2026-11-07",
+    "name": "Saturday 7 November 2026",
     "stops": [
       [
-        "Thornhill — Village Hall · Dunblane United FC Craft Fair",
-        "12:00 PM – 3:00 PM"
-      ],
+        "Cowie — Vincenzo’s Base, 11 Main Street",
+        "From 4:00 PM until the last customer in the queue. Cowie, we’re dedicating the whole day to you!"
+      ]
+    ]
+  },
+  {
+    "date": "2026-11-08",
+    "name": "Sunday 8 November 2026",
+    "stops": [
       [
-        "Drymen — Lomond Mountain Rescue",
-        "From 5:00 PM until the last customer in the queue"
+        "Cambusbarron — Annual Sparktacular Event, Fletcher Park, Mill Road",
+        "From 5:00 PM until the end of the event"
       ]
     ]
   }
 ];
-
 
 export const menuSections=[
   {name:'Chip Shop',columns:['Single','Supper'],items:[
