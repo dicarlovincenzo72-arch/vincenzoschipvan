@@ -30,7 +30,7 @@ export async function onRequestGet() {
     // Reject stale coordinates when the server provides a usable timestamp.
     // Without one, honour the upstream's explicit live=true and don't invent
     // an update time.
-    if (updatedAt !== null && (Date.now()-updatedAt>5*60*1000 || updatedAt>Date.now()+60*1000)) return json({live:false});
+    if (updatedAt !== null && (Date.now()-updatedAt>30*60*1000 || updatedAt>Date.now()+60*1000)) return json({live:false});
     return json({live:true,latitude,longitude,updatedAt:updatedAt===null?null:new Date(updatedAt).toISOString()});
   } catch {
     return json({live:false,error:'gps_service_unreachable'}, 503);
