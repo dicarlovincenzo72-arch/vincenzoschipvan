@@ -31,7 +31,7 @@ close.addEventListener('click',()=>{closeLargeMap();expand.focus()});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&liveCard.classList.contains('expanded'))closeLargeMap()});
 async function refreshVanLocation(){
   try{
-    const response=await fetch('/api/location',{cache:'no-store'});
+    const response=await fetch('https://vincenzos-van-live.dicarlo-vincenzo72.chatgpt.site/api/location',{cache:'no-store'});
     if(!response.ok)throw new Error('Location unavailable');
     const location=await response.json();
     if(!location.live){liveTitle.textContent='Live van location';liveTime.textContent='Not active';offline.hidden=false;map.hidden=true;mapLink.hidden=true;expand.hidden=true;if(liveCard.classList.contains('expanded'))closeLargeMap();return}
@@ -39,7 +39,7 @@ async function refreshVanLocation(){
     if(!Number.isFinite(lat)||!Number.isFinite(lng)||Math.abs(lat)>90||Math.abs(lng)>180)throw new Error('Invalid location');
     const point=location.latitude+','+location.longitude;
     liveTitle.textContent='The little black van is live now';
-    liveTime.textContent=location.updatedAt?'Updated '+new Date(location.updatedAt).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):'GPS connected';
+    liveTime.textContent='Updated '+new Date(location.updatedAt).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
     offline.hidden=true;
     map.hidden=false;
     if(!liveCard.classList.contains('expanded'))expand.hidden=false;
