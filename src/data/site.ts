@@ -89,7 +89,7 @@ export const schedule=[
     "stops": [
       [
         "Cambusbarron — Annual Sparktacular Event, Fletcher Park, Mill Road",
-        "From 5:00 PM until the end of the event"
+        "From 6:00 PM until the end of the event"
       ]
     ]
   }
