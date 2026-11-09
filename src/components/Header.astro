@@ -1,7 +1,7 @@
 ---
 const path=Astro.url.pathname;
 const links=[['/','Home'],['/schedule','Find Us'],['/menu','Menu'],['/contact','Contact']];
-const more=[['/story','Our Story'],['/awards','Awards'],['/press','Press'],['/gallery','Gallery'],['/winter-service','Winter Service'],['/event-compliance-portal','Compliance Portal']];
+const more=[['/our-events','Our Events'],['/story','Our Story'],['/awards','Awards'],['/press','Press'],['/gallery','Gallery'],['/winter-service','Winter Service'],['/event-compliance-portal','Compliance Portal']];
 const isActive=(href:string)=>href==='/'?path==='/':path.startsWith(href);
 ---
 <header id="siteHeader" class="header">

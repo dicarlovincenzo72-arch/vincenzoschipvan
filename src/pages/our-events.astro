@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { eventArchive } from '../data/event-archive';
+import { communityPhotos } from '../data/community-media';
+const events = [...eventArchive].sort((a,b)=>b.date.localeCompare(a.date));
+const months = [...new Set(events.map(e=>e.date.slice(0,7)))];
+const categories = [...new Set(events.map(e=>e.category))].sort();
+const dateLabel = (date:string) => new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+const monthLabel = (month:string) => new Date(month+'-01T12:00:00Z').toLocaleDateString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'});
+const photosFor = (event:any) => {
+  if(event.postId==='122214406694493911') return communityPhotos.filter(p=>p.name.startsWith('bowhill-'));
+  if(event.postId==='122216377748493911') return communityPhotos.filter(p=>p.name.startsWith('fairview-'));
+  if(event.postId==='122216442242493911') return communityPhotos.filter(p=>p.name.includes('roselea'));
+  return event.photos;
+};
+---
+<BaseLayout title="Our Events | Vincenzo's Fish & Chips Van" description="Memories from the Little Black Van: Highland Games, community celebrations, corporate lunches, care-home visits and private events across Scotland, with original photos and videos.">
+  <section class="archive-hero">
+    <img class="hero-photo" src="/assets/images/community/bowhill-queue.jpg" alt="Customers enjoying the day around the Little Black Van at Bowhill Highland Games" width="2048" height="1536" fetchpriority="high" />
+    <div class="container hero-copy"><p class="eyebrow">Vincenzo, Giuliana & the Little Black Van</p><h1>Little van.<br />Wonderful memories.</h1><p>From a care-home lunch to a Highland Games crowd, every invitation becomes part of our story. These are the people, places and celebrations we’ve been proud to join.</p><a class="archive-button" href="#event-archive">Explore our events <span aria-hidden="true">↓</span></a></div>
+  </section>
+
+  <section class="archive-intro container">
+    <div><p class="eyebrow">Our events · 2026</p><h2>Great food. Great people.<br />Days to remember.</h2></div>
+    <div><p>Thank you to every organiser who invited us, every team who welcomed us and every customer who waited for their freshly cooked supper. You keep our little family business moving.</p><p class="signature">With love, Vincenzo & Giuliana</p><p class="archive-period">{events.length} occasions · Archive from 22 April to 9 November 2026</p></div>
+  </section>
+
+  <section id="event-archive" class="archive-section">
+    <div class="container">
+      <form class="archive-filters" id="archiveFilters" role="search" aria-label="Search our past events">
+        <label class="search-label"><span>Find a memory</span><input id="eventSearch" name="search" type="search" placeholder="Event, venue or town…" autocomplete="off" /></label>
+        <label><span>Month</span><select id="eventMonth" name="month"><option value="">All months</option>{months.map(month=><option value={month}>{monthLabel(month)}</option>)}</select></label>
+        <label><span>Event type</span><select id="eventCategory" name="category"><option value="">All events</option>{categories.map(category=><option value={category}>{category}</option>)}</select></label>
+        <button type="reset" class="reset-filters">Reset</button>
+      </form>
+      <p class="result-count" id="eventCount" aria-live="polite">{events.length} events to explore</p>
+      <p class="empty-results" id="emptyEvents" hidden>No events match your search. Try another town, month or event type.</p>
+      {months.map(month=><section class="event-month" data-month-group={month} aria-labelledby={'month-'+month}>
+        <div class="month-heading"><h2 id={'month-'+month}>{monthLabel(month)}</h2><span aria-hidden="true"></span></div>
+        <div class="event-cards">{events.filter(e=>e.date.startsWith(month)).map(event=><article class="event-card" id={event.slug} data-event-card data-month={month} data-category={event.category} data-search={[event.title,event.location,event.description,event.thanks,event.category].join(' ').toLowerCase()}>
+          <div class="event-copy"><div class="event-topline"><span class="event-category">{event.category}</span><a class="event-anchor" href={'#'+event.slug} aria-label={'Link to '+event.title}>#</a></div>
+          <p class="event-date"><time datetime={event.date}>{event.endDate?'25–26 September 2026':dateLabel(event.date)}</time></p>
+          <h3>{event.title}</h3><p class="event-location">{event.location}</p><p class="event-description">{event.description}</p>
+          <p class="event-thanks">{event.thanks}</p></div>
+          {photosFor(event).length>0 && <div class="event-photos"><PhotoGrid photos={photosFor(event)} columns={photosFor(event).length===1?1:2} /></div>}
+          {event.localVideos && <div class="local-videos">{event.localVideos.map(video=><figure><video controls preload="none" playsinline aria-label={video.title}><source src={video.src} type="video/mp4" /><a href={video.src}>Watch the video</a></video><figcaption>{video.title}</figcaption></figure>)}</div>}
+          <details class="event-media">
+            <summary>Open Facebook memories <span>{event.sources.length} {event.sources.length===1?'post':'posts'} <span aria-hidden="true">+</span></span></summary>
+            <div class="media-content"><p class="media-note">Original posts, photos and available videos from this occasion. Facebook may ask you to sign in; each post also has a direct link.</p>
+            {event.sources.map(source=><div class="source-card"><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} <span aria-hidden="true">↗</span></a><button class="load-facebook" type="button" data-url={source.url} data-title={event.title+' — '+source.label}>Show post here</button><div class="facebook-frame" hidden></div></div>)}
+            </div>
+          </details>
+        </article>)}</div>
+      </section>)}
+      <noscript><p>All events are shown above. Open the original Facebook links to see their photos and videos.</p></noscript>
+    </div>
+  </section>
+  <section class="archive-cta"><div class="container"><p class="eyebrow">Let’s make your own memories</p><h2>Your occasion.<br />Our Little Black Van.</h2><p>Planning a celebration, team lunch, fundraiser or community event? Tell us your date, location and guest numbers.</p><a class="archive-button" href="/events#event-enquiry">Bring us to your event <span aria-hidden="true">↗</span></a><a class="route-link" href="/schedule">Looking for today’s stop? Find the van →</a></div></section>
+  <script>
+    const filters = document.querySelector<HTMLFormElement>('#archiveFilters');
+    const search = document.querySelector<HTMLInputElement>('#eventSearch');
+    const month = document.querySelector<HTMLSelectElement>('#eventMonth');
+    const category = document.querySelector<HTMLSelectElement>('#eventCategory');
+    const cards = [...document.querySelectorAll<HTMLElement>('[data-event-card]')];
+    const normalise = (text:string) => text.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+    const filterEvents = () => {
+      const words = normalise(search?.value.trim() || '').split(/\s+/).filter(Boolean);
+      let visible = 0;
+      cards.forEach(card=>{
+        const text = normalise(card.dataset.search || '');
+        const matches = words.every(word=>text.includes(word)) && (!month?.value || card.dataset.month===month.value) && (!category?.value || card.dataset.category===category.value);
+        card.hidden = !matches;
+        if(matches)visible++;
+      });
+      document.querySelectorAll<HTMLElement>('[data-month-group]').forEach(group=>{group.hidden=![...group.querySelectorAll<HTMLElement>('[data-event-card]')].some(card=>!card.hidden)});
+      const count = document.querySelector('#eventCount'); if(count)count.textContent=visible+' '+(visible===1?'event':'events')+' to explore';
+      const empty = document.querySelector<HTMLElement>('#emptyEvents'); if(empty)empty.hidden=visible>0;
+    };
+    filters?.addEventListener('submit',event=>event.preventDefault());
+    filters?.addEventListener('input',filterEvents);
+    filters?.addEventListener('change',filterEvents);
+    filters?.addEventListener('reset',()=>setTimeout(filterEvents,0));
+    document.querySelectorAll<HTMLButtonElement>('.load-facebook').forEach(button=>button.addEventListener('click',()=>{
+      const frame = button.nextElementSibling as HTMLElement;
+      if(!frame || !button.dataset.url)return;
+      const iframe=document.createElement('iframe');
+      const isVideo=button.dataset.url.includes('/reel/');
+      iframe.src='https://www.facebook.com/plugins/'+(isVideo?'video':'post')+'.php?href='+encodeURIComponent(button.dataset.url)+'&show_text=true&width=500';
+      iframe.title=button.dataset.title || 'Facebook event memory';iframe.width='500';iframe.height=isVideo?'700':'620';iframe.loading='lazy';iframe.allowFullscreen=true;iframe.allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';iframe.referrerPolicy='strict-origin-when-cross-origin';
+      frame.appendChild(iframe);frame.hidden=false;button.hidden=true;
+    }));
+  </script>
+</BaseLayout>
+
+<style>
+.archive-hero{position:relative;isolation:isolate;min-height:660px;display:flex;align-items:center;background:#151515;color:#fff;padding:160px 0 85px;overflow:hidden}.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%;z-index:-2}.archive-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.91),rgba(0,0,0,.59) 55%,rgba(0,0,0,.14));z-index:-1}.hero-copy h1{font-family:Georgia,serif;font-size:clamp(3rem,6.5vw,5.8rem);font-weight:400;line-height:1.02;letter-spacing:-.045em;max-width:760px;margin:20px 0 24px}.hero-copy>p:not(.eyebrow){font-size:1.12rem;line-height:1.75;max-width:540px;color:#efefef}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:.7rem;font-weight:900;color:var(--red);margin:0}.hero-copy .eyebrow{color:#f5d8a0}.archive-button{display:inline-flex;gap:28px;align-items:center;justify-content:center;background:var(--red);color:#fff;border-radius:999px;padding:16px 26px;min-height:52px;font-weight:900;font-size:.83rem;margin-top:22px}.archive-button:hover{background:#a81118}.archive-button span{font-size:1.2rem}.archive-intro{padding-block:72px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.archive-intro h2,.archive-cta h2{font:400 clamp(2rem,4vw,3.2rem)/1.12 Georgia,serif;letter-spacing:-.025em;margin:16px 0}.archive-intro p:not(.eyebrow){line-height:1.8;color:var(--soft)}.archive-intro .signature{font-weight:800;color:var(--ink)!important;margin-bottom:8px}.archive-period{font-size:.78rem;margin-top:0}.archive-section{background:var(--cream);padding:42px 0 80px;scroll-margin-top:100px}.archive-filters{display:grid;grid-template-columns:1.5fr 1fr 1.2fr auto;gap:16px;align-items:end;background:#fff;padding:24px;border:1px solid var(--line);border-radius:20px}.archive-filters label{display:grid;gap:8px;min-width:0}.archive-filters label>span{font-weight:800;font-size:.73rem}.archive-filters input,.archive-filters select{width:100%;min-height:48px;padding:12px;border:1px solid #cfc8bf;background:white;border-radius:9px;font:inherit;font-size:.9rem;min-width:0}.reset-filters{background:#151515;color:#fff;border:0;min-height:48px;padding:12px 18px;border-radius:9px;cursor:pointer;font-weight:800}.result-count{font-size:.8rem;color:var(--soft);margin:20px 2px}.month-heading{display:flex;align-items:center;gap:24px;margin:44px 0 22px}.month-heading h2{font:400 2rem Georgia,serif;margin:0;white-space:nowrap}.month-heading>span{height:1px;background:#d6cbbb;flex:1}.event-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}.event-card{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fff;scroll-margin-top:115px;min-width:0}.event-copy{padding:28px 28px 24px}.event-topline{display:flex;align-items:center;justify-content:space-between;gap:12px}.event-category{color:var(--red);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;font-weight:900}.event-anchor{font-size:1rem;color:#777;min-width:32px;min-height:32px;display:grid;place-items:center;border-radius:50%}.event-anchor:hover{background:var(--cream);color:var(--red)}.event-date{font-size:.78rem;color:var(--soft);margin:15px 0 8px}.event-copy h3{font:400 clamp(1.5rem,2.5vw,2rem)/1.15 Georgia,serif;letter-spacing:-.02em;margin:0 0 8px;text-wrap:balance}.event-location{color:var(--red);font-weight:800;font-size:.78rem;margin:0 0 20px}.event-description,.event-thanks{font-size:.92rem;line-height:1.75;color:#4f4f4f;margin:16px 0 0}.event-thanks{padding:16px 0 0;border-top:1px solid #eee5da;font-style:italic}.event-photos{padding:0 20px 4px}.event-photos :global(.curated-photos){margin-top:0;column-gap:12px}.event-photos :global(figure){margin-bottom:12px;border-radius:12px}.event-photos :global(figcaption){padding:12px;gap:6px}.event-photos :global(figcaption strong){font-size:.8rem}.event-photos :global(figcaption small),.event-photos :global(figcaption a){font-size:.68rem}.event-media{border-top:1px solid var(--line)}.event-media summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 28px;font-weight:900;font-size:.8rem;list-style:none}.event-media summary::-webkit-details-marker{display:none}.event-media summary>span{font-weight:400;color:var(--soft);font-size:.73rem;white-space:nowrap}.event-media summary>span span{font-size:1.1rem;margin-left:8px;color:var(--red)}.event-media[open] summary{background:#faf7f2}.media-content{padding:0 20px 20px}.media-note{font-size:.75rem;line-height:1.6;color:var(--soft);margin:18px 6px}.source-card{padding:16px 0;border-top:1px solid #eae4db}.source-card>a{display:block;font-size:.83rem;font-weight:800;text-decoration:underline;text-underline-offset:4px;line-height:1.5}.load-facebook{background:var(--cream);border:1px solid var(--line);border-radius:8px;margin-top:12px;min-height:44px;padding:10px 16px;cursor:pointer;font-weight:700;font-size:.75rem;color:#151515}.facebook-frame{margin-top:16px;width:100%;overflow:auto;background:#f8f8f8;border-radius:8px}.facebook-frame :global(iframe){display:block;border:0;max-width:100%}.local-videos{padding:0 20px 20px;display:grid;gap:16px}.local-videos figure{margin:0}.local-videos video{width:100%;max-height:450px;background:#111;border-radius:10px}.local-videos figcaption{font-size:.75rem;color:var(--soft);padding:8px;text-align:center}.empty-results{padding:30px;background:#fff;border-radius:16px}.archive-cta{background:#151515;color:#fff;text-align:center;padding:80px 0}.archive-cta .eyebrow{color:#efc379}.archive-cta p:not(.eyebrow){max-width:570px;margin:20px auto 0;line-height:1.8;color:#ccc}.route-link{display:block;font-size:.82rem;text-decoration:underline;text-underline-offset:4px;margin-top:24px;color:#eee}[hidden]{display:none!important}:is(input,select,button,summary,a):focus-visible{outline:3px solid #d71920;outline-offset:4px}
+@media(max-width:850px){.archive-intro{gap:30px;padding-block:48px}.archive-filters{grid-template-columns:1fr 1fr}.search-label{grid-column:1/-1}.reset-filters{grid-column:1/-1}.event-cards{gap:18px}.event-copy{padding:22px}.event-media summary{padding:18px 22px}.archive-hero{min-height:600px}}
+@media(max-width:620px){.archive-hero{min-height:610px;padding:140px 0 60px;align-items:flex-end}.archive-hero:after{background:linear-gradient(0deg,rgba(0,0,0,.96),rgba(0,0,0,.63) 62%,rgba(0,0,0,.22))}.hero-photo{object-position:63% center}.hero-copy h1{font-size:3.25rem}.hero-copy>p:not(.eyebrow){font-size:1rem}.archive-intro{grid-template-columns:1fr;gap:10px}.archive-intro h2{font-size:2.2rem}.archive-filters{padding:18px;gap:14px}.event-cards{grid-template-columns:1fr}.month-heading h2{font-size:1.65rem}.archive-section{padding-top:24px}.event-copy h3{font-size:1.8rem}.archive-cta{padding:60px 0}}
+</style>
