@@ -1,24 +1,10 @@
 export const schedule=[
   {
-    "date": "2026-11-02",
-    "name": "Monday 2 November 2026",
+    "date": "2026-11-10",
+    "name": "Tuesday 10 November 2026",
     "stops": [
       [
-        "Kippen — Village Hall",
-        "4:00 PM – 5:30 PM"
-      ],
-      [
-        "Balfron — Donaldson Park",
-        "Arriving 6:15 PM – 6:30 PM; serving until the last customer in the queue"
-      ]
-    ]
-  },
-  {
-    "date": "2026-11-03",
-    "name": "Tuesday 3 November 2026",
-    "stops": [
-      [
-        "Torbrex, Stirling — Glendevon Court",
+        "Stirling — Allan Park House",
         "4:00 PM – 5:00 PM"
       ],
       [
@@ -28,27 +14,23 @@ export const schedule=[
     ]
   },
   {
-    "date": "2026-11-04",
-    "name": "Wednesday 4 November 2026",
+    "date": "2026-11-11",
+    "name": "Wednesday 11 November 2026",
     "stops": [
       [
         "Thornhill — Back Loan",
         "4:00 PM – 5:30 PM"
       ],
       [
-        "Strathblane — Primary School",
-        "Arriving 6:15 PM – 6:30 PM; serving until the last customer in the queue"
+        "Killearn — Kids Hub",
+        "Arriving around 6:15 PM – 6:30 PM; serving until the last customer in the queue"
       ]
     ]
   },
   {
-    "date": "2026-11-05",
-    "name": "Thursday 5 November 2026",
+    "date": "2026-11-12",
+    "name": "Thursday 12 November 2026",
     "stops": [
-      [
-        "Falkirk — Willow Lodge Nursery Care Home",
-        "12:00 PM – 1:30 PM"
-      ],
       [
         "Dunblane — Braeport Centre",
         "4:00 PM – 6:00 PM"
@@ -60,11 +42,11 @@ export const schedule=[
     ]
   },
   {
-    "date": "2026-11-06",
-    "name": "Friday 6 November 2026",
+    "date": "2026-11-13",
+    "name": "Friday 13 November 2026",
     "stops": [
       [
-        "Cornton — Johnston Avenue",
+        "Cornton — Johnstone Avenue",
         "4:00 PM – 5:30 PM"
       ],
       [
@@ -74,22 +56,26 @@ export const schedule=[
     ]
   },
   {
-    "date": "2026-11-07",
-    "name": "Saturday 7 November 2026",
+    "date": "2026-11-14",
+    "name": "Saturday 14 November 2026",
     "stops": [
       [
         "Cowie — Vincenzo’s Base, 11 Main Street",
-        "From 4:00 PM until the last customer in the queue. Cowie, we’re dedicating the whole day to you!"
+        "From 4:00 PM until the last customer in the queue. Cowie, a day just for you!"
       ]
     ]
   },
   {
-    "date": "2026-11-08",
-    "name": "Sunday 8 November 2026",
+    "date": "2026-11-15",
+    "name": "Sunday 15 November 2026",
     "stops": [
       [
-        "Cambusbarron — Annual Sparktacular Event, Fletcher Park, Mill Road",
-        "From 6:00 PM until the end of the event"
+        "PRIVATE EVENT — Craiginn Community Centre, Blackridge, West Lothian",
+        "1:00 PM – 3:00 PM · Private event"
+      ],
+      [
+        "Drymen — Lomond Mountain Rescue",
+        "From 5:00 PM until the last customer in the queue"
       ]
     ]
   }
