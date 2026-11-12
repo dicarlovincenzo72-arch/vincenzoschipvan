@@ -22,6 +22,10 @@ function redirect(location,headers={}){
 export default {
   async fetch(request,env){
     const url=new URL(request.url);
+    if(url.hostname.toLowerCase()==='www.vincenzoschipvan.com'){
+      url.hostname='vincenzoschipvan.com';
+      return Response.redirect(url.toString(),308);
+    }
     let path;
     try{path=decodeURIComponent(url.pathname).replace(/\/+/g,'/').replace(/\/+$/,'').replace(/\.html$/,'')||'/'}catch{return new Response('Invalid URL',{status:400})}
     const protectedPath=(path==='/event-compliance-documents' || path.startsWith('/event-compliance-documents/')) || path==='/compliance-docs' || path.startsWith('/compliance-docs/');
