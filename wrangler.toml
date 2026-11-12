@@ -5,4 +5,4 @@ compatibility_date = "2026-07-17"
 [assets]
 directory = "./dist"
 binding = "ASSETS"
-run_worker_first = ["/event-compliance-documents*", "/event-compliance-portal/login*", "/compliance-docs*"]
+run_worker_first = true
