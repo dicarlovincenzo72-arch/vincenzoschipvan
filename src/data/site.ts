@@ -78,6 +78,20 @@ export const schedule=[
         "From 5:00 PM until the last customer in the queue"
       ]
     ]
+  },
+  {
+    "date": "2026-11-16",
+    "name": "Monday 16 November 2026",
+    "stops": [
+      [
+        "Kippen — Kippen Village Hall",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Balfron — Donaldson Park",
+        "From 6:30 PM until the last customer in the queue"
+      ]
+    ]
   }
 ];
 
