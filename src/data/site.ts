@@ -92,6 +92,20 @@ export const schedule=[
         "From 6:30 PM until the last customer in the queue"
       ]
     ]
+  },
+  {
+    "date": "2026-11-18",
+    "name": "Wednesday 18 November 2026",
+    "stops": [
+      [
+        "Thornhill — Back Loan",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Strathblane — Strathblane Primary School",
+        "From 6:30 PM until the last customer in the queue"
+      ]
+    ]
   }
 ];
 
