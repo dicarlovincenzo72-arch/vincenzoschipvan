@@ -106,6 +106,16 @@ export const schedule=[
         "From 6:30 PM until the last customer in the queue"
       ]
     ]
+  },
+  {
+    "date": "2026-11-20",
+    "name": "Friday 20 November 2026",
+    "stops": [
+      [
+        "Outside our base, 11 Main Street, Cowie, FK7 7BL",
+        "Serving from 4:00 PM. If you’re in the queue, we’ll cook and serve you. CRAG Christmas Lights Switch-On at the Square at 6:00 PM. The van will stay at this address throughout service."
+      ]
+    ]
   }
 ];
 
