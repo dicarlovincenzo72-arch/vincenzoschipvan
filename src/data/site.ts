@@ -116,6 +116,20 @@ export const schedule=[
         "Serving from 4:00 PM. If you’re in the queue, we’ll cook and serve you. CRAG Christmas Lights Switch-On at the Square at 6:00 PM. The van will stay at this address throughout service."
       ]
     ]
+  },
+  {
+    "date": "2026-11-21",
+    "name": "Saturday 21 November 2026",
+    "stops": [
+      [
+        "Cornton — Johnstone Avenue",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Buchlyvie — Station Road",
+        "Around 6:30 PM until the last customer in the queue. If we leave Cornton late, please wait for us. We’re fully stocked and we’re still coming!"
+      ]
+    ]
   }
 ];
 
