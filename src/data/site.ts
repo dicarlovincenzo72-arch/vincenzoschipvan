@@ -130,6 +130,20 @@ export const schedule=[
         "Around 6:30 PM until the last customer in the queue. If we leave Cornton late, please wait for us. We’re fully stocked and we’re still coming!"
       ]
     ]
+  },
+  {
+    "date": "2026-11-22",
+    "name": "Sunday 22 November 2026",
+    "stops": [
+      [
+        "PRIVATE PARTY — Kilmaronock Millennium Hall",
+        "12:30 PM – 3:00 PM · Private booking — not open to the public"
+      ],
+      [
+        "PLEAN — East Plean Primary School, Main Street",
+        "Christmas Light Switch-On · 4:00 PM – 7:00 PM · Everyone is welcome, wherever you’re travelling from!"
+      ]
+    ]
   }
 ];
 
