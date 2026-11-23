@@ -154,8 +154,8 @@ export const schedule=[
         "4:00 PM – 5:30 PM"
       ],
       [
-        "Balfron — Donaldson Park",
-        "Estimated arrival 6:15 PM – 6:30 PM; serving until the last customer in the queue"
+        "Fintry",
+        "Estimated arrival 6:15 PM – 6:30 PM; serving until the last customer in the queue. Check Facebook for the exact stopping point."
       ]
     ]
   }
