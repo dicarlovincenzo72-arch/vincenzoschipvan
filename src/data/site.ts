@@ -144,6 +144,20 @@ export const schedule=[
         "Christmas Light Switch-On · 4:00 PM – 7:00 PM · Everyone is welcome, wherever you’re travelling from!"
       ]
     ]
+  },
+  {
+    "date": "2026-11-23",
+    "name": "Monday 23 November 2026",
+    "stops": [
+      [
+        "Kippen — Kippen Village Hall",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Balfron — Donaldson Park",
+        "Estimated arrival 6:15 PM – 6:30 PM; serving until the last customer in the queue"
+      ]
+    ]
   }
 ];
 
