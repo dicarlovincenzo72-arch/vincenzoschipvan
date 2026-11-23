@@ -154,8 +154,8 @@ export const schedule=[
         "4:00 PM – 5:30 PM"
       ],
       [
-        "Fintry",
-        "Estimated arrival 6:15 PM – 6:30 PM; serving until the last customer in the queue. Check Facebook for the exact stopping point."
+        "Fintry — The Fintry Inn pub car park, 23 Main Street, G63 0XA",
+        "Estimated arrival 6:15 PM – 6:30 PM; serving until the last customer in the queue"
       ]
     ]
   }
