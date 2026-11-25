@@ -158,6 +158,30 @@ export const schedule=[
         "Estimated arrival 6:15 PM – 6:30 PM; serving until the last customer in the queue"
       ]
     ]
+  },
+  {
+    "date": "2026-11-25",
+    "name": "Wednesday 25 November 2026",
+    "stops": [
+      [
+        "Thornhill — Back Loan",
+        "4:00 PM – 5:30 PM"
+      ],
+      [
+        "Killearn — Kids Hub, 31B Main Street, G63 9RJ",
+        "From 6:30 PM until the last customer in the queue"
+      ]
+    ]
+  },
+  {
+    "date": "2026-11-26",
+    "name": "Thursday 26 November 2026",
+    "stops": [
+      [
+        "Dunblane Christmas Extravaganza — The Cross, near Cathedral Halls",
+        "Serving from 4:00 PM"
+      ]
+    ]
   }
 ];
 
