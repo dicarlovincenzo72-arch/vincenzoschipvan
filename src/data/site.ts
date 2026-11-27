@@ -182,6 +182,17 @@ export const schedule=[
         "Serving from 4:00 PM"
       ]
     ]
+  },
+  {
+    "date": "2026-11-28",
+    "name": "Saturday 28 November 2026",
+    "poster": "/assets/images/stops/cowie-28-november-2026.webp",
+    "stops": [
+      [
+        "Outside our base, 11 Main Street, Cowie, FK7 7BL",
+        "From 5:00 PM until the last customer in the queue"
+      ]
+    ]
   }
 ];
 

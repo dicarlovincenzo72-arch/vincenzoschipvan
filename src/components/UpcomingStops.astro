@@ -6,7 +6,25 @@ import {stopMapUrl} from '../utils/schedule';
   <div class="container">
     <div class="upcoming-head"><div><div class="kicker">Find the little black van</div><h2 id="upcomingTitle">Next planned stops</h2></div><a href="/schedule#weekly-schedule">Full weekly schedule →</a></div>
     <p id="upcomingPending">See the dated weekly schedule and check Facebook before travelling.</p>
-    {schedule.map((day,i)=><div data-upcoming-day={i} hidden><h3>{day.name}</h3><div class="upcoming-grid">{day.stops.map(stop=><article><h4>{stop[0]}</h4><p>{stop[1]}</p><a href={stopMapUrl(stop[0])} target="_blank" rel="noopener">Find this stop on Google Maps ↗</a></article>)}</div></div>)}
+    {schedule.map((day, i) => (
+      <div data-upcoming-day={i} hidden>
+        <h3>{day.name}</h3>
+        <div class="upcoming-grid">
+          {day.stops.map(stop => (
+            <article>
+              <h4>{stop[0]}</h4>
+              <p>{stop[1]}</p>
+              <a href={stopMapUrl(stop[0])} target="_blank" rel="noopener">Find this stop on Google Maps ↗</a>
+            </article>
+          ))}
+          {day.poster && (
+            <a class="upcoming-poster" href={day.poster}>
+              <img src={day.poster} alt={`View the stop poster for ${day.name}`} width="1122" height="1402" loading="lazy" />
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
     <p class="upcoming-note">Plans can change. <a href="https://www.facebook.com/VincenzosFishAndChipsVan/" target="_blank" rel="noopener">Check our latest Facebook update before travelling ↗</a></p>
   </div>
 </section>
@@ -21,4 +39,5 @@ refresh();setInterval(refresh,60000);document.addEventListener('visibilitychange
 
 /* Consistent centred section headings and information cards. */
 .upcoming{text-align:center}.upcoming-head{flex-direction:column;align-items:center;justify-content:center;gap:16px}.upcoming-head h2{text-wrap:balance}.upcoming article{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px}.upcoming h4{text-wrap:balance}@media(max-width:650px){.upcoming-head{align-items:center}}
+.upcoming-poster{display:block;width:min(100%,300px);margin-inline:auto}.upcoming-poster img{display:block;width:100%;height:auto;border-radius:12px}
 </style>
